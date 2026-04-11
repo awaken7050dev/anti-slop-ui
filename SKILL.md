@@ -191,6 +191,22 @@ AI centers nav links within their flex container, but doesn't account for the lo
 AI generates a full nav bar with "Product", "Customers", "Docs", "Changelog" links that point to `#` or `/product` pages that don't exist. User clicks, nothing happens. This feels broken and dishonest — worse than having no nav at all.
 - FIX: Every link in the nav MUST do one of three things: (1) link to a real page that exists, (2) scroll to a section on the current page using anchor links (`#pricing`, `#features`), or (3) not be there at all. If you're building a single page, remove nav items that would need separate pages. If the user wants multi-page, build the pages or ask first. NEVER ship a nav link that goes nowhere.
 
+**24. Abstract graphics that don't read as what they represent**
+AI loves generating "cool" abstract visuals (orbital rings, particle systems, mesh gradients) that are supposed to represent the product but don't. A speaker driver becomes a solar system. A data pipeline becomes a lava lamp. If a first-time viewer can't tell what the graphic represents within 2 seconds, it's failed.
+- FIX: Before building any abstract visual, state what it represents in one sentence. If you can't, use a simpler approach: a product photo, an icon, or a diagram with labels. If you DO build an abstract graphic, test it by asking: "Would someone who's never seen this product guess what this graphic is about?" If no, simplify or replace.
+
+**25. Marquee/ticker banners as filler**
+The infinite scrolling text marquee ("Feature 1 • Feature 2 • Feature 3...") became a vibe-code cliché in 2024-2025. Every AI landing page has one. It's used because it's cheap visual polish that fills space between sections, not because it serves the content. Real premium sites that use marquees do it for client logos or press mentions, NOT for feature lists.
+- FIX: If your feature list has fewer than 8 items, use a static grid or list. Marquees are only justified for: (1) client logo strips showing 10+ logos, (2) press mention tickers, (3) live data feeds. If you can't justify why the content needs to MOVE, make it static.
+
+**26. Cursor-dependent design that breaks on mobile**
+AI builds atmospheric effects (glowing orb following cursor, parallax on mouse position, particle systems reacting to hover) that make the desktop experience feel premium but leave mobile users with a flat, empty page. If removing the cursor makes the page feel broken, the design is broken.
+- FIX: Design the page WITHOUT any cursor interaction first. It must look complete as a static page. Cursor effects are enhancement only: the "with cursor" version should be better, but the "without cursor" version must not look empty or incomplete. Test by loading on mobile (or just not moving your mouse for 10 seconds).
+
+**27. Viewport units that prevent browser zoom**
+AI locks hero height to `100dvh`, headline size to `clamp(56px, 9.2vw, 152px)`, and containers to `max-height: calc(100dvh - 280px)`. When the user zooms out (Ctrl+minus), viewport units rescale with zoom level. The layout resists the zoom instead of shrinking. The design gets BIGGER relative to everything else. This is an accessibility failure for low-vision users.
+- FIX: Use `rem` for type sizing, not `vw`. Let hero sections flow with content height instead of locking to `dvh`. Reserve viewport units for full-screen landing heroes only, and even then, set them as `min-height: 100dvh` not `height: 100dvh` so content can overflow if zoomed.
+
 ---
 
 ## STEP 2: APPLY LEVEL-SPECIFIC DESIGN SYSTEM
@@ -513,6 +529,18 @@ Fix: Test on a projector or external monitor. Light mode handles ambient light b
 ---
 
 ## STEP 8: THE FINAL SCAN (MANDATORY — RUN AFTER EVERYTHING ELSE)
+
+### Self-Review Limit (DO NOT BURN TOKENS)
+
+**Do ONE sanity screenshot of the hero/above-fold area.** This catches: broken images, blank page, obvious layout collapse, missing fonts. If it looks intact, STOP and hand over to the user.
+
+Do NOT:
+- Take 5+ screenshots scrolling through the entire page
+- Measure pixel distances with JavaScript
+- Iterate on fixes without asking the user
+- Spend more than 60 seconds on self-review
+
+The right flow: build → one screenshot → "It's at [path]. Open it and tell me what needs fixing." The USER decides whether to review or hand it back. Your job is to not ship a blank page, not to art-direct yourself for 11 minutes.
 
 After the site is "done," run this automated scan before showing it to anyone. This catches the things that slip through design review because they're copy/content issues, not design issues.
 
