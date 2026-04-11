@@ -722,6 +722,7 @@ When building a site, Claude should:
 - All images the same aspect ratio when they shouldn't be (hero should be wide, team photos should be square)
 - No `alt` text on images — accessibility and SEO failure
 - Images not optimized (serving a 4000px image in a 400px container)
+- Colored ambient glow or radial gradient behind product images. The product should sit directly on the page background with no artificial lighting effects. Glow behind a product looks like a gaming peripheral ad, not a premium brand. If the product needs to "pop," use contrast with the page background color, not a colored shadow.
 
 ---
 
