@@ -1,11 +1,11 @@
-# Anti-Slop-UI — One-command installer (Windows)
+# Anti-Slop-UI: one-command installer (Windows)
 #
 # HOW TO USE:
 # 1. Open PowerShell in your project folder
-# 2. Run: irm https://raw.githubusercontent.com/awaken7050/anti-slop-ui/main/install.ps1 | iex
+# 2. Run: irm https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
-$Repo = "https://raw.githubusercontent.com/awaken7050/anti-slop-ui/main"
+$Repo = "https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main"
 $Dir = ".claude\skills\anti-slop-ui"
 
 Write-Host ""

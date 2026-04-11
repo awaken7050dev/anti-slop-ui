@@ -1,9 +1,9 @@
 #!/bin/bash
-# Anti-Slop-UI — One-command installer
+# Anti-Slop-UI: one-command installer
 #
 # HOW TO USE:
 # 1. cd into your project folder
-# 2. Run: curl -sL https://raw.githubusercontent.com/awaken7050/anti-slop-ui/main/install.sh | bash
+# 2. Run: curl -sL https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.sh | bash
 #
 # WHAT IT DOES:
 # - Creates .claude/skills/anti-slop-ui/ in your project
@@ -13,7 +13,7 @@
 
 set -e
 
-REPO="https://raw.githubusercontent.com/awaken7050/anti-slop-ui/main"
+REPO="https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main"
 DIR=".claude/skills/anti-slop-ui"
 
 echo ""
