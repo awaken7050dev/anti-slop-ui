@@ -68,7 +68,7 @@ Examples:
 - "What if the feature grid reveals items as you scroll, with each row sliding in from alternating sides?"
 - "What if the background subtly shifts color temperature as you scroll down the page?"
 
-Frame it as: "I have an idea that could make this stand out — [idea]. Want me to go for it, or should I keep it clean?"
+Frame it as: "I have an idea that could make this stand out: [idea]. Want me to go for it, or should I keep it clean?"
 
 If the user says yes, build it. If no, proceed with standard Level 4 patterns. If they don't respond, just build with whatever context you have — don't stall.
 

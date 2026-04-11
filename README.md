@@ -30,11 +30,11 @@ Before writing a single line of code, the skill forces three decisions:
 2. **Impression level.** A 1 to 5 scale from Bloomberg Terminal to Apple product page. The level determines type scale, color usage, and how much visual weight is allowed.
 3. **Light or dark mode.** Committed upfront, so both states are designed, not retrofitted.
 
-From those answers, Claude picks the design tokens, component patterns, and layout rules that match. It then applies an 18-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
+From those answers, Claude picks the design tokens, component patterns, and layout rules that match. It then applies a 22-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
 
 ## What it kills
 
-Eighteen specific AI tells, grouped into four families:
+Twenty-two specific AI tells, grouped into four families:
 
 - **Visual defaults.** Generic gradients, pill-shaped everything, component libraries shipped untouched.
 - **Typography mistakes.** Display fonts on every heading, Inter with no hierarchy, hero text that breaks on mobile.
@@ -59,7 +59,7 @@ Pick the wrong level and a dashboard feels like a toy, or a landing page feels l
 
 | File       | Size  | Purpose                                                                |
 | ---------- | ----- | ---------------------------------------------------------------------- |
-| `SKILL.md` | 41 KB | Full design system, 18 tells, tokens, component patterns, checklists, battle scars |
+| `SKILL.md` | 43 KB | Full design system, 22 tells, tokens, component patterns, checklists, battle scars |
 | `BRAIN.md` | 7 KB  | Optional reasoning architecture for larger, multi-page builds          |
 
 Two Markdown files. No runtime, no dependencies, no build step. Stack-agnostic: React, Next.js, Vue, Svelte, plain HTML, Tailwind, vanilla CSS, anything.
@@ -69,7 +69,7 @@ Two Markdown files. No runtime, no dependencies, no build step. Stack-agnostic: 
 1. The installer drops `SKILL.md` and `BRAIN.md` into `.claude/skills/anti-slop-ui/`.
 2. It appends a reference to your project's `.claude/CLAUDE.md` so Claude reads the skill before any frontend task.
 3. When you ask Claude to build, redesign, or polish a UI, the skill activates, runs the 3-question intake, and applies the matching design system.
-4. Before declaring the task done, Claude self-audits against the 18 tells and the pre-ship checklist.
+4. Before declaring the task done, Claude self-audits against the 22 tells and the pre-ship checklist.
 
 If you already have a `CLAUDE.md`, the installer appends without overwriting. If you do not, it creates one.
 
