@@ -20,7 +20,27 @@ curl -sL https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/insta
 irm https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.ps1 | iex
 ```
 
-That is the whole install. Next time you run `claude`, the skill activates automatically.
+That is the whole install. Next time you run `claude`, the skill is registered as `/anti-slop-ui`.
+
+## Use it
+
+Run it as a slash command inside Claude Code:
+
+```
+/anti-slop-ui
+```
+
+That triggers the intake questions. Or pass your request inline:
+
+```
+/anti-slop-ui build a landing page for a SaaS analytics tool
+/anti-slop-ui redesign the dashboard to look like Stripe
+/anti-slop-ui this portfolio looks generic, polish it
+```
+
+The skill runs the audience, impression, mode, stack, logo, and pages intake, commits to a plan in one sentence, and builds from there. It self-audits against the 23 tells before declaring the work done.
+
+The installer also wires the skill into `.claude/CLAUDE.md`, so Claude reads it passively on frontend tasks even without the slash command. Use `/anti-slop-ui` when you want to force the full intake. Skip it when you are already mid-conversation and just want the rules applied.
 
 ## What the skill does
 
@@ -68,7 +88,7 @@ Two Markdown files. No runtime, no dependencies, no build step. Stack-agnostic: 
 
 1. The installer drops `SKILL.md` and `BRAIN.md` into `.claude/skills/anti-slop-ui/`.
 2. It appends a reference to your project's `.claude/CLAUDE.md` so Claude reads the skill before any frontend task.
-3. When you ask Claude to build, redesign, or polish a UI, the skill activates, runs the 3-question intake, and applies the matching design system.
+3. Invoke with `/anti-slop-ui [optional prompt]`, or let it activate passively on frontend tasks via the CLAUDE.md reference. Either path runs the intake and applies the matching design system.
 4. Before declaring the task done, Claude self-audits against the 23 tells and the pre-ship checklist.
 
 If you already have a `CLAUDE.md`, the installer appends without overwriting. If you do not, it creates one.
