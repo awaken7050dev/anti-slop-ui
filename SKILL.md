@@ -55,6 +55,16 @@ Options: `Yes, I'll provide it` | `No, just use text` | `Generate one for me`
 If "No" → use a plain text wordmark (brand name in a distinctive font weight). NEVER create a letter-in-a-rounded-square placeholder.
 If "Yes" → ask for the file path or URL before building the header/nav.
 
+**Q6: How many pages?**
+Options: `Single page (sections)` | `Multi-page (2-5 pages)` | `Full site (5+ pages)`
+
+This determines nav strategy:
+- Single page → nav links scroll to sections on the same page (`#pricing`, `#features`). Do NOT add links to pages that don't exist.
+- Multi-page → build all pages. Every nav link must work. Ask which pages they want.
+- Full site → plan the sitemap first, build page by page.
+
+**CRITICAL: Never put a nav link that goes nowhere.** If you're building one page, only include nav items that link to sections ON that page. Dead links feel broken.
+
 ### After gathering answers, state your plan in ONE sentence:
 "Building a [Level X] [light/dark] [framework] interface for [audience]. Design tokens loaded."
 
@@ -68,7 +78,7 @@ Examples:
 - "What if the feature grid reveals items as you scroll, with each row sliding in from alternating sides?"
 - "What if the background subtly shifts color temperature as you scroll down the page?"
 
-Frame it as: "I have an idea that could make this stand out: [idea]. Want me to go for it, or should I keep it clean?"
+Frame it as: "I have an idea that could make this stand out — [idea]. Want me to go for it, or should I keep it clean?"
 
 If the user says yes, build it. If no, proceed with standard Level 4 patterns. If they don't respond, just build with whatever context you have — don't stall.
 
@@ -176,6 +186,10 @@ AI builds a monthly/yearly toggle that changes the price numbers but nothing els
 **22. Header nav not visually centered on the page**
 AI centers nav links within their flex container, but doesn't account for the logo width on the left vs the CTA buttons on the right. Result: the nav LOOKS off-center even though it's technically centered in its container.
 - FIX: Use `position: absolute` + `left: 50%; transform: translateX(-50%)` on the nav links container so it's centered relative to the PAGE, not relative to the remaining flex space. Or use a 3-column grid: `grid-template-columns: 1fr auto 1fr` with logo left-aligned, nav centered, CTAs right-aligned.
+
+**23. Dead nav links that go nowhere**
+AI generates a full nav bar with "Product", "Customers", "Docs", "Changelog" links that point to `#` or `/product` pages that don't exist. User clicks, nothing happens. This feels broken and dishonest — worse than having no nav at all.
+- FIX: Every link in the nav MUST do one of three things: (1) link to a real page that exists, (2) scroll to a section on the current page using anchor links (`#pricing`, `#features`), or (3) not be there at all. If you're building a single page, remove nav items that would need separate pages. If the user wants multi-page, build the pages or ask first. NEVER ship a nav link that goes nowhere.
 
 ---
 
@@ -335,6 +349,7 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **No pulsing/blinking dots next to text?** (Status indicators only where they mean something real)
 - [ ] **Toggles/tabs replay animations on content change?** (Price switch, filter change — visual cue that something happened)
 - [ ] **Header nav visually centered on the PAGE?** (Not just centered in remaining flex space — check with your eyes)
+- [ ] **Every nav link goes somewhere real?** (Click every single link — no `#` hrefs, no dead pages, no "coming soon")
 
 ### Level 1-2 Additional Checks
 
