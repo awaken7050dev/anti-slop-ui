@@ -207,6 +207,18 @@ AI builds atmospheric effects (glowing orb following cursor, parallax on mouse p
 AI locks hero height to `100dvh`, headline size to `clamp(56px, 9.2vw, 152px)`, and containers to `max-height: calc(100dvh - 280px)`. When the user zooms out (Ctrl+minus), viewport units rescale with zoom level. The layout resists the zoom instead of shrinking. The design gets BIGGER relative to everything else. This is an accessibility failure for low-vision users.
 - FIX: Use `rem` for type sizing, not `vw`. Let hero sections flow with content height instead of locking to `dvh`. Reserve viewport units for full-screen landing heroes only, and even then, set them as `min-height: 100dvh` not `height: 100dvh` so content can overflow if zoomed.
 
+**28. Theatrical cosplay elements masquerading as UI chrome**
+AI sees a themed concept (military, cyberpunk, retro, noir, defense) and tries to reinforce it by dressing the browser chrome in costume. A defense-themed site gets a "CLASSIFIED · TIER III ACCESS · AUTHORIZED PERSONNEL ONLY" strip above the nav. A cyberpunk site gets "SYSTEM.LOG // 2087.11.02 :: CONNECTION SECURE" in the footer. A retro site gets a fake CRT scanline overlay and a fake "CH 01" TV channel indicator. Real companies in those industries (Palantir, BAE, Rheinmetall, Shield AI) don't do any of this. Their marketing sites look like normal marketing sites. The theme belongs in the typography, palette, copy tone, photography, and product language. The browser chrome (nav, banners, headers, footers, cookie notices) stays realistic. **The principle: themed aesthetic is not the same as themed props. Typography and copy carry the theme. UI chrome stays realistic.**
+- FIX: Before shipping any themed UI element, ask: "Would this look at home on a movie set, or on an actual company's homepage?" If it belongs on a movie set, delete it. The hero headline, section copy, photography, color palette, and product names do the theming work. The nav bar, the footer links, the cookie notice, and the header should look like a real website built by a real company. If you want your site to feel like Palantir, the copy and photography create that feeling. Palantir's actual nav bar still looks like a normal website.
+
+**29. Eccentric Unicode glyphs as section markers for fake institutional credibility**
+AI reaches for unusual Unicode characters (§, ¶, ※, ◆, ∞, ☰, ◎, ⟡, ❖) as section markers because they "feel" sophisticated or institutional. The most common offender is the section sign § in front of numbered sections: `§01 / DIVISIONS`, `§02 / CAPABILITIES`, `§03 / APPROACH`. To a typography nerd it reads as "legal document, government report, academic paper." To a normal visitor it looks weird and affected, like the site is cosplaying a textbook instead of communicating. Real companies use plain numbers (`01`, `02`) or plain words (`Section 1`, `Overview`, `Approach`).
+- FIX: Section markers are `01`, `02`, `03` or `Section 1`, `Overview`, `Approach`. Never use §, ¶, ※, ◆, ∞, ☰, ◎, or other eccentric glyphs as markers. If you're tempted to reach for one, you're designing a prop, not a label. The only acceptable special characters in a section label are the period or slash as separators (for example, `01 / Divisions` or `Section 1. Overview`).
+
+**30. Decorative horizontal dashes and lines before uppercase eyebrow labels**
+The AI move: a small horizontal line, pipe, or dash sitting to the left of a tracked uppercase label (`— ESTABLISHED BREMEN`, `|| OVERVIEW`, `▸ FEATURES`), often implemented as `<span class="line"></span>` or a `::before` pseudo-element with `content: "—"`. Every vibe-coded landing page has this. It is cheap visual polish that "frames" the label. Real editorial sites (Bloomberg, The Verge, Stripe, Linear) almost never do it. A tracked, uppercase, mono-font label already signals "this is a label" through typography alone. Adding a dash or a line next to it is belt-and-suspenders design: redundant, decorative, and instantly recognizable as AI.
+- FIX: Delete the horizontal line, the dash prefix, the pseudo-element, and any `::before { content: "—" }` decoration. The label stands on its own. If it needs more visual separation from the content below it, add vertical margin, not a horizontal prop. Test: cover the dash or line with your finger and see if the label still looks like a label. It will, because letter-spacing and case are already doing the work. The dash was never needed.
+
 ---
 
 ## STEP 2: APPLY LEVEL-SPECIFIC DESIGN SYSTEM
@@ -366,6 +378,9 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **Toggles/tabs replay animations on content change?** (Price switch, filter change — visual cue that something happened)
 - [ ] **Header nav visually centered on the PAGE?** (Not just centered in remaining flex space — check with your eyes)
 - [ ] **Every nav link goes somewhere real?** (Click every single link — no `#` hrefs, no dead pages, no "coming soon")
+- [ ] **No theatrical cosplay in UI chrome?** (No fake CLASSIFIED banners, no fake terminal logs, no fake scanline overlays. Theme lives in typography and copy, not in nav bars or footers.)
+- [ ] **Section markers use plain numbers or words?** (`01`, `02`, `Section 1`. Never §, ¶, ※, or other eccentric Unicode glyphs.)
+- [ ] **No decorative dashes or lines before uppercase labels?** (Labels stand alone. Letter-spacing and case already signal "label".)
 
 ### Level 1-2 Additional Checks
 
