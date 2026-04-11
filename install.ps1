@@ -13,13 +13,16 @@ Write-Host "  Installing anti-slop-ui v1.0" -ForegroundColor Cyan
 Write-Host ""
 
 New-Item -ItemType Directory -Path $Dir -Force | Out-Null
-Write-Host "  [1/4] Created $Dir" -ForegroundColor Green
+Write-Host "  [1/5] Created $Dir" -ForegroundColor Green
 
 Invoke-WebRequest -Uri "$Repo/SKILL.md" -OutFile "$Dir\SKILL.md" -UseBasicParsing
-Write-Host "  [2/4] Downloaded SKILL.md" -ForegroundColor Green
+Write-Host "  [2/5] Downloaded SKILL.md" -ForegroundColor Green
 
 Invoke-WebRequest -Uri "$Repo/BRAIN.md" -OutFile "$Dir\BRAIN.md" -UseBasicParsing
-Write-Host "  [3/4] Downloaded BRAIN.md" -ForegroundColor Green
+Write-Host "  [3/5] Downloaded BRAIN.md" -ForegroundColor Green
+
+Invoke-WebRequest -Uri "$Repo/PREMIUM.md" -OutFile "$Dir\PREMIUM.md" -UseBasicParsing
+Write-Host "  [4/5] Downloaded PREMIUM.md" -ForegroundColor Green
 
 $ClaudeMd = ".claude\CLAUDE.md"
 New-Item -ItemType Directory -Path ".claude" -Force | Out-Null
@@ -27,14 +30,14 @@ New-Item -ItemType Directory -Path ".claude" -Force | Out-Null
 if (Test-Path $ClaudeMd) {
     $content = Get-Content $ClaudeMd -Raw -ErrorAction SilentlyContinue
     if ($content -and $content -notmatch "anti-slop-ui") {
-        "`n## Skills`n- Read ``.claude/skills/anti-slop-ui/SKILL.md`` before any frontend work`n- For complex builds, also read ``.claude/skills/anti-slop-ui/BRAIN.md``" | Add-Content $ClaudeMd
-        Write-Host "  [4/4] Added to CLAUDE.md" -ForegroundColor Green
+        "`n## Skills`n- Read ``.claude/skills/anti-slop-ui/SKILL.md`` before any frontend work`n- For complex builds, also read ``.claude/skills/anti-slop-ui/BRAIN.md```n- For Level 4-5 builds, also read ``.claude/skills/anti-slop-ui/PREMIUM.md``" | Add-Content $ClaudeMd
+        Write-Host "  [5/5] Added to CLAUDE.md" -ForegroundColor Green
     } else {
-        Write-Host "  [4/4] Already set up (skipped)" -ForegroundColor Yellow
+        Write-Host "  [5/5] Already set up (skipped)" -ForegroundColor Yellow
     }
 } else {
-    "## Skills`n- Read ``.claude/skills/anti-slop-ui/SKILL.md`` before any frontend work`n- For complex builds, also read ``.claude/skills/anti-slop-ui/BRAIN.md``" | Set-Content $ClaudeMd
-    Write-Host "  [4/4] Created CLAUDE.md" -ForegroundColor Green
+    "## Skills`n- Read ``.claude/skills/anti-slop-ui/SKILL.md`` before any frontend work`n- For complex builds, also read ``.claude/skills/anti-slop-ui/BRAIN.md```n- For Level 4-5 builds, also read ``.claude/skills/anti-slop-ui/PREMIUM.md``" | Set-Content $ClaudeMd
+    Write-Host "  [5/5] Created CLAUDE.md" -ForegroundColor Green
 }
 
 Write-Host ""

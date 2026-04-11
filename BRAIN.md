@@ -1,6 +1,6 @@
-# BRAIN.md — Reasoning Architecture for Frontend Engineering
+# BRAIN.md: Reasoning Architecture for Frontend Engineering
 
-**OPTIONAL MODULE — Load this for complex multi-page builds, not quick components.**
+**OPTIONAL MODULE. Load this for complex multi-page builds, not quick components.**
 
 This file teaches Claude HOW TO THINK about frontend work, not just what to build. It prevents the pattern where AI generates plausible-looking code that falls apart on real devices, with real data, under real scrutiny.
 
@@ -18,7 +18,7 @@ Write the subtask list. If you can't list the subtasks, you don't understand the
 ### 2. Generate Alternatives Before Committing
 For every design or architectural decision, generate AT LEAST 2 approaches. Force a third even if the first two feel obvious.
 
-Example - "How should the mobile nav work?"
+Example: "How should the mobile nav work?"
 - Option A: Hamburger menu with slide-out drawer. Pros: familiar. Cons: hides navigation, extra tap.
 - Option B: Bottom tab bar. Pros: always visible, thumb-friendly. Cons: limits to 5 items.
 - Option C: Collapsible top bar that shrinks on scroll. Pros: saves space dynamically. Cons: complex implementation.
@@ -75,15 +75,24 @@ Because: [The reasoning]
 Risk: [What could prove this wrong]
 ```
 
+Example:
+```
+## 2026-04-10 Mobile Navigation
+Chose: Bottom tab bar with 4 items
+Over: Hamburger menu (hides nav, extra tap) and collapsible top bar (complex, buggy on Safari)
+Because: Only 4 main sections, all equally important, thumb-friendly
+Risk: If we add a 5th section later, we need to redesign
+```
+
 ---
 
 ## Failure Capture
 
 When something goes wrong (a bug, a wrong assumption, a client complaint), don't just fix it. Capture the lesson so the same mistake never happens again.
 
-1. What happened?
-2. Root cause?
-3. The rule to prevent it
+1. What happened? (e.g., "Hero text was 3 lines on iPhone 12 but 2 lines in Chrome responsive mode")
+2. Root cause? (e.g., "Chrome responsive mode uses different font rendering than iOS Safari, affecting line breaks")
+3. The rule to prevent it: (e.g., "ALWAYS test hero text on a real iPhone, not just responsive mode. Emulators lie about text rendering.")
 4. Add the rule to the anti-slop checklist or battle scars section.
 
 Every mistake should make you permanently better. If you make the same mistake twice, the learning loop is broken.
@@ -92,13 +101,21 @@ Every mistake should make you permanently better. If you make the same mistake t
 
 ## Anti-Patterns to Watch For
 
-- **Cargo-culting:** Copying a Tailwind pattern from a tutorial without understanding why it works in that context.
+These are the specific ways AI-driven frontend work goes wrong. Check for them during the self-critique step:
+
+- **Cargo-culting:** Copying a Tailwind pattern from a tutorial without understanding why it works in that context. "This dashboard tutorial used grid-cols-3 so I will too" but your content doesn't fit 3 columns.
+
 - **Premature responsiveness:** Making every component responsive before verifying it works at desktop width. Get ONE breakpoint perfect first, then adapt.
-- **Spec drift:** Implementing what you THINK looks good instead of what was specified.
-- **Desktop tunnel vision:** Building for 1280px+ and treating mobile as an afterthought. 60%+ of web traffic is mobile.
-- **The "it works in dev" trap:** Dev mode hides real-world issues. Slow fonts, API latency, image loading delays.
-- **Animation addiction:** Adding motion because it's fun to code, not because it serves the user.
-- **Screenshot-driven development:** Making it look good in a screenshot without testing interaction states.
+
+- **Spec drift:** Implementing what you THINK looks good instead of what was specified. If the user said "blue accent" and you used purple because it "felt right," that's spec drift.
+
+- **Desktop tunnel vision:** Building for 1280px+ and treating mobile as an afterthought. 60%+ of web traffic is mobile. Design mobile-first or at minimum mobile-equal.
+
+- **The "it works in dev" trap:** Dev mode with hot reload, fresh cache, and localhost speed hides real-world issues. Slow fonts, API latency, image loading delays, CDN cache behavior.
+
+- **Animation addiction:** Adding motion because it's fun to code, not because it serves the user. Every animation should answer: "what STATE CHANGE does this communicate?"
+
+- **Screenshot-driven development:** Making it look good in a screenshot without testing interaction states. Hover, focus, active, disabled, loading, error, empty.
 
 ---
 
@@ -106,7 +123,7 @@ Every mistake should make you permanently better. If you make the same mistake t
 
 Stop and ask:
 1. Am I still following the Impression Scale level we set at the start? Or have I drifted?
-2. Is the spacing consistent across everything I've built so far?
+2. Is the spacing consistent across everything I've built so far? (Open pages side by side)
 3. Am I using the same component patterns everywhere, or has my approach drifted?
-4. What's the riskiest remaining work?
+4. What's the riskiest remaining work? (Do that next, while you have context)
 5. If I showed everything built so far to the target audience, would they see a cohesive product or a patchwork?

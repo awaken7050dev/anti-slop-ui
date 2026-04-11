@@ -77,19 +77,21 @@ Pick the wrong level and a dashboard feels like a toy, or a landing page feels l
 
 ## What is in the box
 
-| File       | Size  | Purpose                                                                |
-| ---------- | ----- | ---------------------------------------------------------------------- |
-| `SKILL.md` | 52 KB | Full design system, 30 tells, tokens, component patterns, checklists, battle scars |
-| `BRAIN.md` | 7 KB  | Optional reasoning architecture for larger, multi-page builds          |
+| File         | Size  | Purpose                                                                |
+| ------------ | ----- | ---------------------------------------------------------------------- |
+| `SKILL.md`   | 50 KB | Full design system, 30 tells, tokens, component patterns, checklists, battle scars |
+| `BRAIN.md`   | 7 KB  | Optional reasoning architecture for larger, multi-page builds          |
+| `PREMIUM.md` | 25 KB | Level 4-5 offensive playbook: font pairings, OKLCH palettes, layered shadows, spring easing, noise textures, glassmorphism, border glow, micro-interactions, hero recipes |
 
-Two Markdown files. No runtime, no dependencies, no build step. Stack-agnostic: React, Next.js, Vue, Svelte, plain HTML, Tailwind, vanilla CSS, anything.
+Three Markdown files. No runtime, no dependencies, no build step. Stack-agnostic: React, Next.js, Vue, Svelte, plain HTML, Tailwind, vanilla CSS, anything.
 
 ## How it works under the hood
 
-1. The installer drops `SKILL.md` and `BRAIN.md` into `.claude/skills/anti-slop-ui/`.
+1. The installer drops `SKILL.md`, `BRAIN.md`, and `PREMIUM.md` into `.claude/skills/anti-slop-ui/`.
 2. It appends a reference to your project's `.claude/CLAUDE.md` so Claude reads the skill before any frontend task.
 3. Invoke with `/anti-slop-ui [optional prompt]`, or let it activate passively on frontend tasks via the CLAUDE.md reference. Either path runs the intake and applies the matching design system.
-4. Before declaring the task done, Claude self-audits against the 30 tells and the pre-ship checklist.
+4. For Level 4-5 builds, Claude loads `PREMIUM.md` on demand for the full offensive playbook. Lower impression levels skip it to save tokens.
+5. Before declaring the task done, Claude self-audits against the 30 tells and the pre-ship checklist.
 
 If you already have a `CLAUDE.md`, the installer appends without overwriting. If you do not, it creates one.
 

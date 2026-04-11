@@ -266,17 +266,9 @@ Start with Level 2 tokens, then add:
 
 ### Level 4-5: Expressive / Spectacular
 
-Start with Level 3, then add:
-- Distinctive display font (NOT Inter, NOT system fonts)
-- Complex animation sequences: stagger, spring physics, scroll-triggered reveals
-- Custom cursor, custom scrollbar, custom selection color
-- SVG illustrations or Lottie animations
-- Noise/grain textures, glassmorphism (if tasteful), mesh gradients
-- Creative layouts: overlapping elements, asymmetric grids, diagonal sections
-- Micro-interactions: button press feedback, toggle animations, input focus effects
-- Sound effects (optional, for Level 5 only)
+**For Level 4-5 builds, load PREMIUM.md.** It contains the full offensive playbook: 10 curated font pairings with CDN links, OKLCH color palette generator, layered shadow system, spring easing presets, noise/grain textures, glassmorphism recipes, border glow system, micro-interaction patterns, hero moment recipes, SVG decorations, cursor enhancements, and scroll-triggered animations.
 
-At Level 4-5, the existing `frontend-design` skill's guidelines for bold aesthetics apply — distinctive typography, unexpected layouts, atmospheric backgrounds. The anti-slop-ui rules still apply (no purple gradients, no generic card grids) but the energy level is higher.
+Start with Level 3 tokens, then apply PREMIUM.md patterns on top. The anti-slop-ui rules from Steps 1-10 still apply at Level 4-5 — PREMIUM.md adds craft, it doesn't override safety.
 
 ---
 
@@ -381,6 +373,7 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **No theatrical cosplay in UI chrome?** (No fake CLASSIFIED banners, no fake terminal logs, no fake scanline overlays. Theme lives in typography and copy, not in nav bars or footers.)
 - [ ] **Section markers use plain numbers or words?** (`01`, `02`, `Section 1`. Never §, ¶, ※, or other eccentric Unicode glyphs.)
 - [ ] **No decorative dashes or lines before uppercase labels?** (Labels stand alone. Letter-spacing and case already signal "label".)
+- [ ] **`-webkit-font-smoothing: antialiased` set on html?** (One line, instant premium text rendering)
 
 ### Level 1-2 Additional Checks
 
@@ -394,13 +387,18 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **No animations beyond hover states?** (Unless explicitly requested)
 - [ ] **Passes the "PowerPoint screenshot test"?** (Would it look native in a corporate slide deck?)
 
-### Level 4-5 Additional Checks
+### Level 4-5 Additional Checks (requires PREMIUM.md)
 
-- [ ] **Display font is NOT Inter, Roboto, Poppins, or Space Grotesk?** (Pick something distinctive)
-- [ ] **At least one "wow" moment exists?** (A single memorable interaction that someone would show a friend)
-- [ ] **Animations are choreographed, not random?** (Page load sequence tells a visual story)
-- [ ] **Custom hover states on interactive elements?** (Not just color change — consider scale, shadow, glow)
-- [ ] **Background is not a flat solid color?** (Use subtle gradients, noise, patterns, or layered depth)
+- [ ] **Font pairing from PREMIUM.md curated list?** (Not Inter, not Roboto, not Poppins)
+- [ ] **OKLCH hue outside 200-280?** (Or blue paired with warm accent?)
+- [ ] **Shadows are layered (3+ layers)?** (Not single box-shadow)
+- [ ] **Spring easing curves used?** (Not browser default ease/ease-in-out)
+- [ ] **At least one "hero moment" exists?** (One memorable visual — not three)
+- [ ] **Micro-interactions on buttons, inputs, cards?** (Press, focus glow, hover lift)
+- [ ] **Noise/grain texture on at least one background section?**
+- [ ] **Background is not a flat solid color?** (Gradient, texture, pattern, or layered depth)
+- [ ] **Anti-convergence: different font pairing than last generation?**
+- [ ] **Page looks complete WITHOUT cursor movement?** (Test by not moving mouse for 10s)
 
 ---
 

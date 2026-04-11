@@ -7,7 +7,7 @@
 #
 # WHAT IT DOES:
 # - Creates .claude/skills/anti-slop-ui/ in your project
-# - Downloads SKILL.md and BRAIN.md into it
+# - Downloads SKILL.md, BRAIN.md, and PREMIUM.md into it
 # - Adds the skill reference to your .claude/CLAUDE.md
 # - That's it. Next time you run "claude", the skill is active.
 
@@ -23,27 +23,30 @@ echo ""
 
 # Create skill directory
 mkdir -p "$DIR"
-echo "  [1/4] Created $DIR"
+echo "  [1/5] Created $DIR"
 
 # Download skill files
 curl -sL "$REPO/SKILL.md" -o "$DIR/SKILL.md"
-echo "  [2/4] Downloaded SKILL.md"
+echo "  [2/5] Downloaded SKILL.md"
 
 curl -sL "$REPO/BRAIN.md" -o "$DIR/BRAIN.md"
-echo "  [3/4] Downloaded BRAIN.md"
+echo "  [3/5] Downloaded BRAIN.md"
+
+curl -sL "$REPO/PREMIUM.md" -o "$DIR/PREMIUM.md"
+echo "  [4/5] Downloaded PREMIUM.md"
 
 # Wire up CLAUDE.md
 mkdir -p .claude
 if [ -f ".claude/CLAUDE.md" ]; then
   if ! grep -q "anti-slop-ui" ".claude/CLAUDE.md"; then
-    printf "\n## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n" >> ".claude/CLAUDE.md"
-    echo "  [4/4] Added skill reference to existing CLAUDE.md"
+    printf "\n## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n- For Level 4-5 builds, also read \`.claude/skills/anti-slop-ui/PREMIUM.md\`\n" >> ".claude/CLAUDE.md"
+    echo "  [5/5] Added skill reference to existing CLAUDE.md"
   else
-    echo "  [4/4] CLAUDE.md already references anti-slop-ui (skipped)"
+    echo "  [5/5] CLAUDE.md already references anti-slop-ui (skipped)"
   fi
 else
-  printf "## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n" > ".claude/CLAUDE.md"
-  echo "  [4/4] Created CLAUDE.md with skill reference"
+  printf "## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n- For Level 4-5 builds, also read \`.claude/skills/anti-slop-ui/PREMIUM.md\`\n" > ".claude/CLAUDE.md"
+  echo "  [5/5] Created CLAUDE.md with skill reference"
 fi
 
 echo ""
