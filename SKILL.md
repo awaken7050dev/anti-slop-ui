@@ -13,61 +13,46 @@ The core insight: **vibe-coded sites all look the same because AI models converg
 
 ## STEP 0: UNDERSTAND THE CONTEXT (MANDATORY — DO THIS FIRST)
 
-Before writing ANY frontend code, answer these questions. If the user hasn't specified, ASK THEM using plan mode or interactive questions. Do not guess — wrong assumptions here cascade into wrong design decisions.
+Before writing ANY frontend code, gather context. **Present these as interactive selectable options, NOT as a wall of text.** Use Claude Code's plan mode, `todowrite` with choices, or any interactive question UI available. The user should be able to TAP/CLICK their answer, not type a paragraph.
 
-### Questions to Ask
+If the user's prompt already implies answers (e.g., "build me a dashboard for our analytics team" → audience is Developer/Internal, Impression Scale is 2-3), infer what you can and only ask what's ambiguous.
 
-**Q1: Who is the audience?**
-This determines EVERYTHING. A senior executive at a consulting firm needs a completely different interface than a Gen-Z consumer. Map the answer to one of these personas:
+### Present these questions with selectable options:
 
-| Persona | What they expect | Example products they use daily |
-|---|---|---|
-| Enterprise / Executive | Clean, restrained, data-dense, light mode, exportable | FactSet, Salesforce, PowerPoint, Bloomberg |
-| Developer / Technical | Dense, keyboard-driven, dark mode acceptable, monospace | Linear, Vercel, GitHub, VS Code |
-| Consumer / General | Friendly, spacious, rounded, colorful, mobile-first | Airbnb, Notion, Spotify, Instagram |
-| Creative / Portfolio | Bold, distinctive, editorial, rule-breaking | Awwwards sites, Framer showcases |
-| Internal Tool / Admin | Functional, boring, fast, zero learning curve | Google Admin, AWS Console, Retool |
+**Q1: Who will use this?**
+Options: `Enterprise/Executive` | `Developer/Technical` | `Consumer/General` | `Creative/Portfolio` | `Internal Tool`
 
-**Q2: What is the visual energy level? (The Impression Scale)**
+Quick reference (don't show this to user, use it internally):
+- Enterprise → clean, restrained, light mode, exportable (FactSet, Salesforce, Bloomberg)
+- Developer → dense, keyboard-driven, dark OK, monospace (Linear, Vercel, GitHub)
+- Consumer → friendly, spacious, rounded, mobile-first (Airbnb, Notion, Spotify)
+- Creative → bold, distinctive, editorial, rule-breaking (Awwwards, Framer)
+- Internal → functional, boring, fast, zero learning curve (AWS Console, Retool)
 
-Ask the user: "On a scale of 1-5, how visually impressive should this be?"
+**Q2: Visual energy level?**
+Options: `1 Invisible` | `2 Restrained` | `3 Balanced` | `4 Expressive` | `5 Spectacular`
 
-```
-1 ─── INVISIBLE ──── The UI should disappear. User notices DATA, not design.
-│   Think: Bloomberg Terminal, Google Sheets, internal admin panels.
-│   Zero animations. Zero decoration. Maximum density. Function only.
-│
-2 ─── RESTRAINED ──── Professional and polished, but design serves content.
-│   Think: Stripe Dashboard, FactSet, Linear.
-│   Subtle hover states. Clean typography. Light animations. Institutional.
-│
-3 ─── BALANCED ────── Modern SaaS standard. Polished but not flashy.
-│   Think: Notion, Vercel Dashboard, Figma.
-│   Smooth transitions. Good spacing. Clear hierarchy. The "good default."
-│
-4 ─── EXPRESSIVE ──── Design is part of the experience. Memorable.
-│   Think: Raycast, Arc Browser, Liveblocks.
-│   Purposeful animations. Distinctive typography. Color with personality.
-│
-5 ─── SPECTACULAR ─── Design IS the product. Award-worthy. Maximum craft.
-    Think: Linear's marketing site, Stripe's homepage, Apple.
-    Complex animations. Custom everything. Every pixel is intentional.
-```
+Quick reference (don't show this to user):
+- 1 = Bloomberg. Data only. Zero decoration.
+- 2 = Stripe Dashboard. Professional. Institutional.
+- 3 = Notion. Modern SaaS. The good default.
+- 4 = Raycast. Design is part of the experience.
+- 5 = Apple. Every pixel intentional.
 
-**Q3: Light mode or dark mode?**
+**Q3: Light or dark?**
+Options: `Light mode` | `Dark mode` | `Both`
 
-Default guidance if user doesn't specify:
-- Enterprise / Executive audience → **Light mode** (passes the "PowerPoint screenshot test")
-- Developer audience → Dark mode acceptable
-- Consumer → Follow platform conventions (usually light)
-- Portfolio / Creative → Match the creative direction
-- If presenting to non-technical stakeholders → **Always light mode**
+Default if user doesn't care: Light for Enterprise/Consumer, Dark for Developer, match the vibe for Creative.
 
-The "PowerPoint screenshot test": if someone screenshots your tool and pastes it into a slide deck, does it look native or alien? Dark mode screenshots in corporate decks look like gaming apps.
+**Q4: Stack?**
+Options: `React/Next.js` | `Vue` | `Svelte` | `Plain HTML/CSS` | `Other`
 
-**Q4: What framework and constraints?**
+If the project already has a framework, skip this question entirely.
 
-React/Next.js, Vue, Svelte, plain HTML? Tailwind or vanilla CSS? Any component library (shadcn, Radix, Headless UI)? These determine implementation patterns but NOT design decisions.
+### After gathering answers, state your plan in ONE sentence:
+"Building a [Level X] [light/dark] [framework] interface for [audience]. Design tokens loaded."
+
+Then proceed to Step 1. Do NOT explain the full design system to the user. Just build.
 
 ---
 
