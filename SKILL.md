@@ -49,8 +49,35 @@ Options: `React/Next.js` | `Vue` | `Svelte` | `Plain HTML/CSS` | `Other`
 
 If the project already has a framework, skip this question entirely.
 
+**Q5: Do you have a logo or icon?**
+Options: `Yes, I'll provide it` | `No, just use text` | `Generate one for me`
+
+If "No" → use a plain text wordmark (brand name in a distinctive font weight). NEVER create a letter-in-a-rounded-square placeholder.
+If "Yes" → ask for the file path or URL before building the header/nav.
+
 ### After gathering answers, state your plan in ONE sentence:
 "Building a [Level X] [light/dark] [framework] interface for [audience]. Design tokens loaded."
+
+### For Level 4-5 ONLY — Pitch One Ambitious Idea Before Building
+
+If the user chose Level 4 or 5, you likely have a creative idea that could take the site from good to memorable. **Pitch it in one sentence before building.** Don't explain the implementation — just describe the user-facing effect.
+
+Examples:
+- "What if the pricing cards do a subtle flip animation when you toggle monthly/yearly?"
+- "What if the hero has a live counter showing real-time signups?"
+- "What if the feature grid reveals items as you scroll, with each row sliding in from alternating sides?"
+- "What if the background subtly shifts color temperature as you scroll down the page?"
+
+Frame it as: "I have an idea that could make this stand out — [idea]. Want me to go for it, or should I keep it clean?"
+
+If the user says yes, build it. If no, proceed with standard Level 4 patterns. If they don't respond, just build with whatever context you have — don't stall.
+
+### Context Check
+
+If the prompt is vague and you need more context to build well, offer BOTH options in the same message:
+"I could ask a few more questions to nail this, or I can just run with what I have. Which do you prefer?"
+
+Never stall the user with 10 questions. Either ask the critical ones via interactive options (Step 0) or just build.
 
 Then proceed to Step 1. Do NOT explain the full design system to the user. Just build.
 
@@ -133,6 +160,22 @@ AI writes `<img src="/hero.jpg">` with no fallback, no loading state, and no che
 **18. iOS Safari viewport hell**
 `100vh` causes the address bar jiggle on iOS Safari. Content jumps when the browser chrome appears/disappears.
 - FIX: Use `100dvh` (dynamic viewport height) for full-screen layouts. Test on a REAL iPhone, not just Chrome DevTools responsive mode. The emulator lies about Safari behavior.
+
+**19. Floating pill badges with colored dots ("● PRICING", "✨ FEATURES", "🚀 NEW")**
+THE signature move of AI landing pages. A small rounded pill with a pulsing/static dot and an all-caps label floating above a section heading. Real marketing sites almost never do this. It's filler that adds zero information.
+- FIX: Delete them entirely. The section heading ("Pricing") is enough. If you need a section label, use a plain uppercase text label without the pill, without the dot, without the border. If there's a blinking/pulsing dot next to ANY text on the page, remove it immediately.
+
+**20. Placeholder logos (letter in a rounded square)**
+AI generates a fake logo by putting the first letter of the brand name in a rounded square with a dark background. Every single time. The "M" in a box, the "A" in a circle. Nobody is fooled by this.
+- FIX: **Ask the user if they have a logo/icon BEFORE building.** If yes, use it. If no, use plain text for the brand name with a distinctive font weight or color. A clean wordmark ("Metrix" in 600-weight Inter) looks 10x more professional than a fake letter-in-a-box logo. NEVER generate a placeholder icon unless explicitly asked to.
+
+**21. No animation on state changes (toggle/tab switches just swap text)**
+AI builds a monthly/yearly toggle that changes the price numbers but nothing else moves. The user clicks, text swaps silently, and they're not sure anything happened. Real sites re-trigger card animations, fade numbers in/out, or slide values to signal "something changed."
+- FIX: When content changes from a toggle, tab, or filter: (1) numbers should animate/count to the new value, or at minimum fade out→in with a 150ms transition, (2) if cards had entrance animations, replay them on content switch, (3) add a subtle scale pulse (1.0 → 1.02 → 1.0, 200ms) on the changed elements. The toggle itself should have a smooth sliding indicator, not a hard swap.
+
+**22. Header nav not visually centered on the page**
+AI centers nav links within their flex container, but doesn't account for the logo width on the left vs the CTA buttons on the right. Result: the nav LOOKS off-center even though it's technically centered in its container.
+- FIX: Use `position: absolute` + `left: 50%; transform: translateX(-50%)` on the nav links container so it's centered relative to the PAGE, not relative to the remaining flex space. Or use a 3-column grid: `grid-template-columns: 1fr auto 1fr` with logo left-aligned, nav centered, CTAs right-aligned.
 
 ---
 
@@ -287,6 +330,11 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **Every image element has a description comment?** ("Image: barista pouring latte in white cup")
 - [ ] **Every component file has a purpose comment at the top?** (What it renders, where it's used, what data it needs)
 - [ ] **No noise comments?** (No "// this is a div", no commented-out old code, no "TODO maybe")
+- [ ] **No floating pill badges with dots?** ("● PRICING", "✨ FEATURES" — delete these entirely)
+- [ ] **No placeholder letter-in-a-box logos?** (Use text wordmark if no real logo exists)
+- [ ] **No pulsing/blinking dots next to text?** (Status indicators only where they mean something real)
+- [ ] **Toggles/tabs replay animations on content change?** (Price switch, filter change — visual cue that something happened)
+- [ ] **Header nav visually centered on the PAGE?** (Not just centered in remaining flex space — check with your eyes)
 
 ### Level 1-2 Additional Checks
 
