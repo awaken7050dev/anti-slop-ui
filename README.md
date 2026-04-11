@@ -2,7 +2,7 @@
 
 Stop your Claude Code sites from looking AI-generated.
 
-Every AI-built frontend looks the same: purple gradients, pill-shaped cards, Inter font everywhere, "Welcome to [Product]" heroes, em dashes in every sentence. Clients notice. Reddit notices. This Claude Code skill fixes it.
+Every AI-built frontend looks the same: purple gradients, pill-shaped cards, Inter font everywhere, "Welcome to [Product]" heroes, em dashes in every sentence. This skill breaks the pattern.
 
 ## Install
 
