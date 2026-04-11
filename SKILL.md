@@ -219,6 +219,14 @@ AI reaches for unusual Unicode characters (§, ¶, ※, ◆, ∞, ☰, ◎, ⟡,
 The AI move: a small horizontal line, pipe, or dash sitting to the left of a tracked uppercase label (`— ESTABLISHED BREMEN`, `|| OVERVIEW`, `▸ FEATURES`), often implemented as `<span class="line"></span>` or a `::before` pseudo-element with `content: "—"`. Every vibe-coded landing page has this. It is cheap visual polish that "frames" the label. Real editorial sites (Bloomberg, The Verge, Stripe, Linear) almost never do it. A tracked, uppercase, mono-font label already signals "this is a label" through typography alone. Adding a dash or a line next to it is belt-and-suspenders design: redundant, decorative, and instantly recognizable as AI.
 - FIX: Delete the horizontal line, the dash prefix, the pseudo-element, and any `::before { content: "—" }` decoration. The label stands on its own. If it needs more visual separation from the content below it, add vertical margin, not a horizontal prop. Test: cover the dash or line with your finger and see if the label still looks like a label. It will, because letter-spacing and case are already doing the work. The dash was never needed.
 
+**31. Header that hides and reveals on scroll**
+AI builds headers that start invisible and slide down when the user scrolls, or disappear on scroll-down and reappear on scroll-up. This creates a jarring "now you see me" effect. Real premium sites keep the header permanently visible with a semi-transparent blurred background so content scrolls naturally behind it.
+- FIX: Header should be `position: fixed` with `backdrop-filter: blur(12px)` and a semi-transparent background (`rgba(0,0,0,0.6)` for dark, `rgba(255,255,255,0.8)` for light). Always visible. Never hide the header entirely on scroll. The blur lets page content pass behind it without visual clutter.
+
+**32. Random accent styling on wordmark letters**
+AI loves to italicize or color one random letter in a text-only brand wordmark ("Lumin*a*", "Met*r*ix") for "visual interest." No real brand does this unless it is part of their actual designed logo. It looks like a typo or a broken font weight.
+- FIX: Text-only wordmarks should use uniform styling. Same weight, same style, same color for every letter. If the user wants a distinctive wordmark, vary the FONT or WEIGHT of the entire word, not individual letters. Only apply per-letter styling if the user explicitly requests it or provides a logo that uses it.
+
 ---
 
 ## STEP 2: APPLY LEVEL-SPECIFIC DESIGN SYSTEM
@@ -373,6 +381,9 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **No theatrical cosplay in UI chrome?** (No fake CLASSIFIED banners, no fake terminal logs, no fake scanline overlays. Theme lives in typography and copy, not in nav bars or footers.)
 - [ ] **Section markers use plain numbers or words?** (`01`, `02`, `Section 1`. Never §, ¶, ※, or other eccentric Unicode glyphs.)
 - [ ] **No decorative dashes or lines before uppercase labels?** (Labels stand alone. Letter-spacing and case already signal "label".)
+- [ ] **Header is always visible with backdrop-filter blur?** (Not hiding/revealing on scroll. `position: fixed` + `backdrop-filter: blur(12px)` + semi-transparent bg.)
+- [ ] **Wordmark text has uniform letter styling?** (No random italic or colored single letters unless it's the actual brand logo.)
+- [ ] **Product images have clean backgrounds?** (Use rembg to remove backgrounds, or mix-blend-mode as CSS fallback.)
 - [ ] **`-webkit-font-smoothing: antialiased` set on html?** (One line, instant premium text rendering)
 
 ### Level 1-2 Additional Checks
@@ -658,6 +669,41 @@ A site with gray placeholder boxes or watermarked stock photos is INSTANTLY iden
 - ALWAYS use the client's REAL photos if available
 - If no real photos: use Unsplash/Pexels with SPECIFIC search terms (not "business meeting" — search "coffee shop interior kuala lumpur" or "office building malaysia")
 - NEVER use obviously American stock photos for non-US businesses
+- **For product hero shots (Level 4-5):** search for "product name cutout", "product name PNG isolated", or "product name product shot on black/white". Product images floating on the page without a visible background look 10x more premium.
+
+### Product Image Background Removal
+
+The best product images float on the page without a studio backdrop. When you find the perfect product image but it has a background, REMOVE it rather than settling for a worse transparent image.
+
+**PREFERRED: Remove the background with rembg (Claude Code can run this):**
+```bash
+pip install rembg --break-system-packages
+rembg i input.jpg output.png
+```
+One command. Strips the background, outputs a transparent PNG. Use this whenever a product hero image has a background that clashes with the page.
+
+Works well for: electronics, headphones, laptops, watches, shoes, bags, bottles, furniture, and any solid object with clear edges.
+
+Skip rembg for: portraits with hair, transparent or glass objects, smoke, fabric with fuzzy edges. For these, search for a pre-cut image or use mix-blend-mode instead.
+
+**CSS FALLBACK: mix-blend-mode (when rembg is not available):**
+
+On dark page backgrounds, make dark image backgrounds disappear:
+```css
+.product-image { mix-blend-mode: multiply; }
+```
+
+On light page backgrounds, make white image backgrounds disappear:
+```css
+.product-image { mix-blend-mode: screen; }
+```
+Note: mix-blend-mode is imperfect. It affects the entire image, not just the background. Colors shift. Use rembg when possible.
+
+**Image search terms for product shots:**
+- "isolated" or "cutout" or "product shot" for clean images
+- "on black" for dark-themed sites (black background blends naturally)
+- "on white" for light-themed sites
+- Avoid: "lifestyle", "in use", "on desk" when you want a clean hero
 
 ### How Claude Code Should Handle Images
 

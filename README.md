@@ -38,7 +38,7 @@ That triggers the intake questions. Or pass your request inline:
 /anti-slop-ui this portfolio looks generic, polish it
 ```
 
-The skill runs the audience, impression, mode, stack, logo, and pages intake, commits to a plan in one sentence, and builds from there. It self-audits against the 30 tells before declaring the work done.
+The skill runs the audience, impression, mode, stack, logo, and pages intake, commits to a plan in one sentence, and builds from there. It self-audits against the 32 tells before declaring the work done.
 
 The installer also wires the skill into `.claude/CLAUDE.md`, so Claude reads it passively on frontend tasks even without the slash command. Use `/anti-slop-ui` when you want to force the full intake. Skip it when you are already mid-conversation and just want the rules applied.
 
@@ -50,7 +50,7 @@ Before writing a single line of code, the skill forces three decisions:
 2. **Impression level.** A 1 to 5 scale from Bloomberg Terminal to Apple product page. The level determines type scale, color usage, and how much visual weight is allowed.
 3. **Light or dark mode.** Committed upfront, so both states are designed, not retrofitted.
 
-From those answers, Claude picks the design tokens, component patterns, and layout rules that match. It then applies a 30-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
+From those answers, Claude picks the design tokens, component patterns, and layout rules that match. It then applies a 32-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
 
 ## What it kills
 
@@ -79,7 +79,7 @@ Pick the wrong level and a dashboard feels like a toy, or a landing page feels l
 
 | File         | Size  | Purpose                                                                |
 | ------------ | ----- | ---------------------------------------------------------------------- |
-| `SKILL.md`   | 50 KB | Full design system, 30 tells, tokens, component patterns, checklists, battle scars |
+| `SKILL.md`   | 52 KB | Full design system, 32 tells, tokens, component patterns, checklists, battle scars |
 | `BRAIN.md`   | 7 KB  | Optional reasoning architecture for larger, multi-page builds          |
 | `PREMIUM.md` | 25 KB | Level 4-5 offensive playbook: font pairings, OKLCH palettes, layered shadows, spring easing, noise textures, glassmorphism, border glow, micro-interactions, hero recipes |
 
@@ -91,7 +91,7 @@ Three Markdown files. No runtime, no dependencies, no build step. Stack-agnostic
 2. It appends a reference to your project's `.claude/CLAUDE.md` so Claude reads the skill before any frontend task.
 3. Invoke with `/anti-slop-ui [optional prompt]`, or let it activate passively on frontend tasks via the CLAUDE.md reference. Either path runs the intake and applies the matching design system.
 4. For Level 4-5 builds, Claude loads `PREMIUM.md` on demand for the full offensive playbook. Lower impression levels skip it to save tokens.
-5. Before declaring the task done, Claude self-audits against the 30 tells and the pre-ship checklist.
+5. Before declaring the task done, Claude self-audits against the 32 tells and the pre-ship checklist.
 
 If you already have a `CLAUDE.md`, the installer appends without overwriting. If you do not, it creates one.
 
