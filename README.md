@@ -32,28 +32,16 @@ Before writing a single line of code, the skill forces three decisions:
 
 From those answers, Claude picks the design tokens, component patterns, and layout rules that match. It then applies an 18-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
 
-## The 18 tells it kills
+## What it kills
 
-1. Purple and blue gradient backgrounds
-2. Pill-shaped everything
-3. Inter with no type hierarchy
-4. Symmetric three-card grids
-5. Decorative color with no semantic meaning
-6. "Welcome to [Product]" hero sections
-7. Default shadcn and MUI styling left untouched
-8. Pointless bounce animations
-9. Consumer-app spacing applied to data views
-10. Spinners instead of skeleton loaders
-11. Inconsistent spacing between sections
-12. Missing data attribution on charts and tables
-13. Em dashes in every sentence
-14. Unverified marketing copy and fake stats
-15. Display fonts on every heading
-16. Hero text that breaks on mobile
-17. Placeholder images shipped to production
-18. iOS Safari `100vh` viewport bugs
+Eighteen specific AI tells, grouped into four families:
 
-Plus real image sourcing guidance (Unsplash, Pexels), code comments that survive compaction, and 26 battle scars collected from real project failures.
+- **Visual defaults.** Generic gradients, pill-shaped everything, component libraries shipped untouched.
+- **Typography mistakes.** Display fonts on every heading, Inter with no hierarchy, hero text that breaks on mobile.
+- **Layout giveaways.** Symmetric three-card grids, consumer-app spacing on dashboards, motion that adds nothing.
+- **Content slop.** Em dashes in every sentence, unverified marketing copy, placeholder images in production.
+
+The full list, the enforcement rules, a pre-ship checklist, and twenty-six battle scars from real projects live inside the skill.
 
 ## The impression scale
 
