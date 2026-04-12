@@ -1,6 +1,6 @@
 # anti-slop-ui
 
-A Claude Code skill that eliminates the AI-generated look from any frontend. Purple gradients, pill-shaped cards, Inter font, "Welcome to [Product]" heroes, em dashes in every sentence. You know the look. This kills it.
+An AI skill that eliminates the AI-generated look from any frontend. Purple gradients, pill-shaped cards, Inter font, "Welcome to [Product]" heroes, em dashes in every sentence. You know the look. This kills it. Works with Claude Code, Cursor, and Windsurf.
 
 ## Before and after
 
@@ -15,7 +15,7 @@ Same brand brief. Same model. The only difference is the skill.
 
 ## Install
 
-Run this from anywhere. It installs to `~/.claude/skills/anti-slop-ui/` (global) and wires the skill into `~/.claude/CLAUDE.md` so Claude loads it in every project.
+Run this from anywhere. The installer auto-detects your editors and asks which to configure.
 
 **macOS and Linux**
 
@@ -29,17 +29,11 @@ curl -sL https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/insta
 irm https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.ps1 | iex
 ```
 
-One install. Works globally. Next time you run `claude` in any project, the skill is registered as `/anti-slop-ui`.
+Supports **Claude Code**, **Cursor**, and **Windsurf**. One install. Works globally. No per-project setup needed.
 
 ## Use it
 
-Run it as a slash command inside Claude Code:
-
-```
-/anti-slop-ui
-```
-
-That triggers the intake questions. Or pass your request inline:
+**Claude Code** -- run it as a slash command:
 
 ```
 /anti-slop-ui build a landing page for a SaaS analytics tool
@@ -47,9 +41,11 @@ That triggers the intake questions. Or pass your request inline:
 /anti-slop-ui this portfolio looks generic, polish it
 ```
 
-The skill runs the audience, impression, mode, stack, logo, and pages intake, commits to a plan in one sentence, and builds from there. It self-audits against the 34 tells before declaring the work done.
+That triggers the intake questions (audience, impression level, mode, stack, logo, pages), then builds. It self-audits against the 34 tells before declaring the work done. The skill also activates passively on frontend tasks via the CLAUDE.md reference.
 
-The installer also wires the skill into `.claude/CLAUDE.md`, so Claude reads it passively on frontend tasks even without the slash command. Use `/anti-slop-ui` when you want to force the full intake. Skip it when you are already mid-conversation and just want the rules applied.
+**Cursor** -- the skill activates automatically when you work on frontend files (`.tsx`, `.jsx`, `.html`, `.css`, `.vue`, `.svelte`, `.astro`). No slash command needed. The `.mdc` rule file triggers it.
+
+**Windsurf** -- same automatic activation on frontend files via the global rules directory.
 
 ## What the skill does
 
@@ -59,7 +55,7 @@ Before writing a single line of code, the skill forces three decisions:
 2. **Impression level.** A 1 to 5 scale from Bloomberg Terminal to Apple product page. The level determines type scale, color usage, and how much visual weight is allowed.
 3. **Light or dark mode.** Committed upfront, so both states are designed, not retrofitted.
 
-From those answers, Claude picks the design tokens, component patterns, and layout rules that match. It then applies a 34-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
+From those answers, the AI picks the design tokens, component patterns, and layout rules that match. It then applies a 34-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
 
 ## What it kills
 
@@ -82,7 +78,7 @@ The full list, the enforcement rules, a pre-ship checklist, and twenty-six battl
 5   SPECTACULAR    Apple product page. Every pixel considered.
 ```
 
-Pick the wrong level and a dashboard feels like a toy, or a landing page feels like a tax form. The skill ties each level to concrete token values so Claude cannot drift.
+Pick the wrong level and a dashboard feels like a toy, or a landing page feels like a tax form. The skill ties each level to concrete token values so the AI cannot drift.
 
 ## What is in the box
 
@@ -97,22 +93,30 @@ Four Markdown files. No runtime, no dependencies, no build step. Stack-agnostic:
 
 ## How it works under the hood
 
-1. The installer drops `SKILL.md`, `BRAIN.md`, `PREMIUM.md`, and `MOBILE.md` into `~/.claude/skills/anti-slop-ui/` (global).
-2. It appends a reference to `~/.claude/CLAUDE.md` so Claude reads the skill before any frontend task in any project.
-3. Invoke with `/anti-slop-ui [optional prompt]`, or let it activate passively on frontend tasks via the CLAUDE.md reference. Either path runs the intake and applies the matching design system.
-4. For Level 4-5 builds, Claude loads `PREMIUM.md` on demand for the full offensive playbook. Lower impression levels skip it to save tokens.
-5. After the desktop build is complete, Claude reads `MOBILE.md` and runs a mobile adaptation pass: fluid typography, touch targets, safe areas, animation performance, responsive images.
-6. Before declaring the task done, Claude self-audits against the 34 tells and the pre-ship checklist.
+1. The installer asks which editor to configure, then drops the four skill files into the appropriate global skills directory (`~/.claude/skills/`, `~/.cursor/skills/`, or `~/.windsurf/skills/`).
+2. It wires the skill into the editor's config: `CLAUDE.md` for Claude Code, a `.mdc` rule file for Cursor, or a rules markdown for Windsurf.
+3. The skill activates on frontend tasks. For Claude Code, invoke with `/anti-slop-ui [optional prompt]` or let it trigger passively. For Cursor and Windsurf, it activates automatically on frontend files.
+4. For Level 4-5 builds, the AI loads `PREMIUM.md` on demand for the full offensive playbook. Lower impression levels skip it to save tokens.
+5. After the desktop build is complete, the AI reads `MOBILE.md` and runs a mobile adaptation pass: fluid typography, touch targets, safe areas, animation performance, responsive images.
+6. Before declaring the task done, the AI self-audits against the 34 tells and the pre-ship checklist.
 
-If you already have a `~/.claude/CLAUDE.md`, the installer appends without overwriting. If you do not, it creates one.
+Existing config files are appended to, never overwritten.
 
 ## Uninstall
 
-```bash
-rm -rf ~/.claude/skills/anti-slop-ui
-```
+Remove the skill directory for your editor:
 
-Then remove the `## Skills` block from `~/.claude/CLAUDE.md`.
+```bash
+# Claude Code
+rm -rf ~/.claude/skills/anti-slop-ui
+# then remove the "## Skills" block from ~/.claude/CLAUDE.md
+
+# Cursor
+rm -rf ~/.cursor/skills/anti-slop-ui ~/.cursor/rules/anti-slop-ui.mdc
+
+# Windsurf
+rm -rf ~/.windsurf/skills/anti-slop-ui ~/.windsurf/rules/anti-slop-ui.md
+```
 
 ## License
 
