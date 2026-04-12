@@ -826,6 +826,116 @@ document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
 ---
 
+## CONCEPTUAL BACKGROUND BANK
+
+Every Level 4-5 hero background must pass the Conceptual Grounding Test: "this exists because [product reason]." The problem: if this skill gives ONE example (contour lines for audio), Claude will reuse that same example every single time. The bank below provides 6-8 pre-validated conceptual mappings per product category so Claude picks a DIFFERENT one each build.
+
+### Product Category Mappings
+
+**Audio/Headphones:** contour topography (frequency response curves), cymatics patterns (sound made visible in sand/water), waveform spectrograms, vinyl groove macro texture, acoustic room reflection rays, standing wave interference patterns, speaker cone cross-section rings, studio mixing board fader lines
+
+**Finance/Fintech:** candlestick abstraction (price movement), ledger grid patterns (structured data), vault door radial lines (security), currency watermark micro-patterns, ticker tape streams, bond yield curves as landscape, balance sheet tree diagrams
+
+**Developer Tools:** AST node trees (code structure), diff heatmaps (change visualization), terminal scanline patterns, dependency graph constellations, git branch timelines, stack frame layers, syntax token color bands
+
+**Health/Wellness:** cellular structure patterns (biology), heartbeat rhythm lines, molecular bond networks, dermatome body maps, circadian wave cycles, anatomical cross-section layers
+
+**E-commerce/Retail:** packaging unbox sequences (product reveal), fabric weave textures, supply chain route maps, barcode/QR abstract grids, shelf planogram layouts, material swatch gradients
+
+**Climate/Energy:** isobar weather maps, solar panel cell grids, wind flow streamlines, geological strata layers, tidal pattern curves, carbon cycle loop diagrams
+
+### Concept Seed Generator
+
+```python
+# Run this at the start of any Level 4-5 build.
+import random
+
+CONCEPT_BANK = {
+    "audio_headphones": [
+        "contour topography (frequency curves)",
+        "cymatics patterns (sound in sand/water)",
+        "waveform spectrograms",
+        "vinyl groove macro texture",
+        "acoustic room reflection rays",
+        "standing wave interference patterns",
+        "speaker cone cross-section rings",
+        "studio mixing board fader lines",
+    ],
+    "finance_fintech": [
+        "candlestick abstraction (price movement)",
+        "ledger grid patterns (structured data)",
+        "vault door radial lines (security)",
+        "currency watermark micro-patterns",
+        "ticker tape streams",
+        "bond yield curves as landscape",
+        "balance sheet tree diagrams",
+    ],
+    "developer_tools": [
+        "AST node trees (code structure)",
+        "diff heatmaps (change visualization)",
+        "terminal scanline patterns",
+        "dependency graph constellations",
+        "git branch timelines",
+        "stack frame layers",
+        "syntax token color bands",
+    ],
+    "health_wellness": [
+        "cellular structure patterns (biology)",
+        "heartbeat rhythm lines",
+        "molecular bond networks",
+        "dermatome body maps",
+        "circadian wave cycles",
+        "anatomical cross-section layers",
+    ],
+    "ecommerce_retail": [
+        "packaging unbox sequences (product reveal)",
+        "fabric weave textures",
+        "supply chain route maps",
+        "barcode/QR abstract grids",
+        "shelf planogram layouts",
+        "material swatch gradients",
+    ],
+    "climate_energy": [
+        "isobar weather maps",
+        "solar panel cell grids",
+        "wind flow streamlines",
+        "geological strata layers",
+        "tidal pattern curves",
+        "carbon cycle loop diagrams",
+    ],
+}
+
+# Hue range: 0-360, but skip the 200-280 banned zone (the AI-purple trap).
+SAFE_HUES = list(range(0, 200)) + list(range(281, 361))
+
+def generate_seed(category=None):
+    if category is None:
+        category = random.choice(list(CONCEPT_BANK.keys()))
+    elif category not in CONCEPT_BANK:
+        print(f"Unknown category '{category}'. Available: {list(CONCEPT_BANK.keys())}")
+        return
+
+    concept = random.choice(CONCEPT_BANK[category])
+    hue = random.choice(SAFE_HUES)
+    font_pairing_index = random.randint(1, 10)
+
+    print(f"Category:      {category}")
+    print(f"Concept:       {concept}")
+    print(f"Base hue:      {hue} (OKLCH)")
+    print(f"Font pairing:  #{font_pairing_index} (see Section A)")
+
+generate_seed()  # Pass a category string to target a specific product type.
+```
+
+### Rules for Using the Bank
+
+- All entries in the bank are pre-validated as argumentative. They pass the Conceptual Grounding Test by design: every mapping ties back to the product domain, not to decoration.
+- Claude MUST pick a different concept than its last generation for the same product category. Repeating the same concept across consecutive builds defeats the purpose of the bank.
+- If Claude genuinely cannot find a good fit from the bank for an unusual product, it may pause and ask the user which direction to take. This is not recommended for standard builds but is acceptable for edge cases where the product does not fit any listed category.
+- The bank is a starting point, not a ceiling. Claude can invent NEW conceptual mappings as long as they pass the grounding test. If a new mapping is strong, it earns a place in the bank.
+
+---
+
 ## ANTI-CONVERGENCE CHECKLIST (run after every Level 4-5 build)
 
 Even with these patterns, Claude may converge on a new "premium default." Check:
@@ -840,3 +950,5 @@ Even with these patterns, Claude may converge on a new "premium default." Check:
 - [ ] Does the page look complete WITHOUT cursor movement?
 - [ ] Is `-webkit-font-smoothing: antialiased` set?
 - [ ] Does `prefers-reduced-motion` disable all animations?
+- [ ] Is my hero background concept different from my last generation for this product category?
+- [ ] Did I run the concept seed generator before starting?

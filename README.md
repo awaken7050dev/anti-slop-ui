@@ -6,13 +6,14 @@ Every AI-built frontend looks the same: purple gradients, pill-shaped cards, Int
 
 ## Before and after
 
-![Lumina headphones landing page. Left: built by default Claude. Right: built with anti-slop-ui applied.](comparison.png)
+![Before: default Claude output for Lumina headphones](before.png)
+![After: same brief with anti-slop-ui applied](after.png)
 
 Same brand brief. Same model. The only difference is the skill.
 
-**Left (vibe-coded default).** Abstract orbital graphic where a product photo belongs, so you cannot actually tell what this company sells. Italic accent on a generic "Sound beyond silence" tagline that sounds like every other AI hero. Tiny product, empty dark canvas, no price, no specs, no reason to care. `PRE-ORDER` button with no context.
+**Before (vibe-coded default).** Abstract orbital graphic where a product photo belongs, so you cannot actually tell what this company sells. Italic accent on a generic "Sound beyond silence" tagline that sounds like every other AI hero. Tiny product, empty dark canvas, no price, no specs, no reason to care. `PRE-ORDER` button with no context.
 
-**Right (anti-slop-ui).** Real product photo bleeding off the edge as the hero moment. Concrete spec copy: 40 mm beryllium-coated driver, 28 dB active silence, 48 hours per charge, shipped in batches of 500 from Copenhagen. Price on the CTA. Plain section marker (`01 / Lumina One`), uniform wordmark, asymmetric split layout instead of a centered stack.
+**After (anti-slop-ui).** Real product photo bleeding off the edge as the hero moment. Concrete spec copy: 40 mm beryllium-coated driver, 28 dB active silence, 48 hours per charge, shipped in batches of 500 from Copenhagen. Price on the CTA. Plain section marker (`01 / Lumina One`), uniform wordmark, asymmetric split layout instead of a centered stack.
 
 ## Install
 
