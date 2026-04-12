@@ -1,8 +1,6 @@
 # anti-slop-ui
 
-Stop your Claude Code sites from looking AI-generated.
-
-Every AI-built frontend looks the same: purple gradients, pill-shaped cards, Inter font everywhere, "Welcome to [Product]" heroes, em dashes in every sentence. This skill breaks the pattern.
+A Claude Code skill that eliminates the AI-generated look from any frontend. Purple gradients, pill-shaped cards, Inter font, "Welcome to [Product]" heroes, em dashes in every sentence. You know the look. This kills it.
 
 ## Before and after
 
@@ -11,9 +9,9 @@ Every AI-built frontend looks the same: purple gradients, pill-shaped cards, Int
 
 Same brand brief. Same model. The only difference is the skill.
 
-**Before (vibe-coded default).** Abstract orbital graphic where a product photo belongs, so you cannot actually tell what this company sells. Italic accent on a generic "Sound beyond silence" tagline that sounds like every other AI hero. Tiny product, empty dark canvas, no price, no specs, no reason to care. `PRE-ORDER` button with no context.
+**Before.** Decorative dash before an uppercase eyebrow label. Italic accent on one word of a generic tagline. Product buried inside an abstract orbital graphic instead of shown directly. Specs exist but are vague and buried in body copy. No price on the CTA.
 
-**After (anti-slop-ui).** Real product photo bleeding off the edge as the hero moment. Concrete spec copy: 40 mm beryllium-coated driver, 28 dB active silence, 48 hours per charge, shipped in batches of 500 from Copenhagen. Price on the CTA. Plain section marker (`01 / Lumina One`), uniform wordmark, asymmetric split layout instead of a centered stack.
+**After.** Product photo bleeds off the edge as the hero. Spec copy is concrete: 40 mm beryllium-coated driver, 28 dB active silence, 48 hours per charge, batches of 500, ships from Copenhagen. Price on the CTA. Plain section marker (`01 / Lumina One`), uniform wordmark, asymmetric layout.
 
 ## Install
 
