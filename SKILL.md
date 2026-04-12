@@ -97,7 +97,11 @@ Then proceed to Step 1. Do NOT explain the full design system to the user. Just 
 
 These are the patterns that make ANY site instantly recognizable as AI-generated. Every single one must be eliminated regardless of the Impression Scale level.
 
-### The 12 Tells of Vibe Code (and their fixes)
+### Before applying any of the rules below: The Conceptual Grounding Test
+
+Every element on the page must finish this sentence: "This exists because [product/user reason]." If you cannot finish the sentence, delete the element. Gradients, blobs, aurora lights, floating particles, decorative shapes, filler marquees, and stock hero sections all fail this test by default. Visuals must ARGUE for the product, not decorate around it. A topographic contour background on an audio product works because topographic lines = frequency curves. Warm lighting on the same product fails because lighting has no product reason. Decoration with no argument is the root of every tell in this list. If you are picking visuals from a vibe menu ("warm lighting," "aurora blobs," "glassmorphism feels premium") without a reason tied to the product, you are building slop. Stop, pitch the idea in one sentence, get approval, then build.
+
+### The Tells of Vibe Code (and their fixes)
 
 **1. Purple/blue gradient backgrounds**
 THE #1 tell. Every AI defaults to indigo-to-purple or blue-to-cyan gradients because they dominate training data.
@@ -226,6 +230,10 @@ AI builds headers that start invisible and slide down when the user scrolls, or 
 **32. Random accent styling on wordmark letters**
 AI loves to italicize or color one random letter in a text-only brand wordmark ("Lumin*a*", "Met*r*ix") for "visual interest." No real brand does this unless it is part of their actual designed logo. It looks like a typo or a broken font weight.
 - FIX: Text-only wordmarks should use uniform styling. Same weight, same style, same color for every letter. If the user wants a distinctive wordmark, vary the FONT or WEIGHT of the entire word, not individual letters. Only apply per-letter styling if the user explicitly requests it or provides a logo that uses it.
+
+**33. Filter-blur morphing blob backgrounds**
+The 2024-2025 AI signature move: `filter: blur(100px)` (or higher) applied to saturated radial gradients, combined with morphing `border-radius: 60% 40% 30% 70%` "blobs," often animated. Every prompt-engineered landing page has this. Changing the hue does not save you. Tell #1 is about the color; this is about the TECHNIQUE. Warm lighting blobs, aurora blobs, lavender blobs, amber blobs, teal blobs are all the same category of slop. If you reach for `filter: blur(100px)` on a gradient div, you are building a vibe-coded background.
+- FIX: Before typing `filter: blur`, ask: "Does this shape answer a question the product cares about?" Backgrounds must be argumentative, not atmospheric. A contour map on an audio product works because topographic lines = frequency curves. Warm lighting on the same product does not. If the background cannot finish the sentence "this exists because [product reason]," delete it. Replace with a flat tinted dark, a noise texture (see PREMIUM.md Section E), or a composed inline SVG that means something to the product. For performance, SVG path updates in `requestAnimationFrame` are far cheaper on the GPU than `filter: blur()` and can be animated smoothly.
 
 ---
 
@@ -384,6 +392,8 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **Header is always visible with backdrop-filter blur?** (Not hiding/revealing on scroll. `position: fixed` + `backdrop-filter: blur(12px)` + semi-transparent bg.)
 - [ ] **Wordmark text has uniform letter styling?** (No random italic or colored single letters unless it's the actual brand logo.)
 - [ ] **Product images have clean backgrounds?** (Use rembg to remove backgrounds, or mix-blend-mode as CSS fallback.)
+- [ ] **No `filter: blur()` morphing blob backgrounds?** (No saturated gradients blurred to 100px+ with morphing border-radius. Changing the hue does not save you.)
+- [ ] **Every visual element passes the Conceptual Grounding Test?** (Can you finish "this exists because [product reason]" for every background, shape, animation, and decoration? If no, delete it.)
 - [ ] **`-webkit-font-smoothing: antialiased` set on html?** (One line, instant premium text rendering)
 
 ### Level 1-2 Additional Checks

@@ -62,6 +62,23 @@ After completing a feature, pretend you never saw the original request. Look at 
 
 ---
 
+## Interpreting User Rejection: Category vs Tweak
+
+When the user rejects something ("feels weird," "not it," "something's off," "not quite"), that is usually a category diagnosis, not a tweak request. Before iterating on the same approach, stop and ask: **are they telling me to tune the current knobs, or to change instruments entirely?**
+
+- **Tweak rejection** means "the idea is right, the execution needs adjustment." Change font size, spacing, color value, animation timing.
+- **Category rejection** means "you are in the wrong neighborhood entirely." Change the instrument: drop the gradient and use a solid color, drop the blob and use a contour, drop the hero image and use typography.
+
+**Heuristics for spotting category rejection:**
+- If you have already tried two variations of the same idea and the user is still rejecting, that is the signal to switch categories. Do NOT try a third tweak. The user is pointing at the neighborhood, not the house.
+- Vague taste-based language ("feels AI," "too much," "weird vibe," "something's off") is almost always category-level. The user can see something you cannot see from inside the loop.
+- Specific mechanical language ("too big," "move it left," "lighter blue") is tweak-level. Execute the tweak directly.
+- When in doubt, ASK: "Do you want me to tune this, or try a different direction entirely?" One question saves three failed iterations.
+
+**The collaborator's edge:** a human reviewer has a category-level view you do not have while building. When they reject something, your first question should be "wrong execution, or wrong category?" Not "what tweak do they want?" The tweak assumption burns iterations. The category question costs one sentence.
+
+---
+
 ## Decision Logging
 
 For multi-page builds, log significant design decisions so you don't second-guess them later or make contradictory choices across pages.

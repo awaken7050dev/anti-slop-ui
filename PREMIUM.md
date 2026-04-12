@@ -590,6 +590,48 @@ Every Level 4-5 site needs ONE memorable visual moment. Claude picks the most ap
 }
 ```
 
+### 7. Headline that crosses the product image (situational):
+
+Not mandatory. Use when the hero has a real product photo AND the composition supports it. Depends on product, aspect ratio, and the feel you want. When it IS the right call, aim for intentional ~50% overlap: zero touch reads as generic templating, 100% cover reads as a mistake, the middle is where taste lives. Editorial sites (B&O, Dior, Loewe) compose the whole hero as one canvas. Side-by-side flex columns with a gap is the Bootstrap default every AI site falls into and reads as "content column + image column" instead of one designed image.
+
+**Add `white-space: nowrap` on the display headline FIRST, before tuning anything else.** It is a failsafe, not an afterthought. A display headline must never wrap mid-phrase during iteration ("between / notes." is unforgivable). Add the failsafe, then tune letter-spacing, font-size, and margins with the safety net in place.
+
+```css
+.hero {
+  position: relative;
+  min-height: 90vh;
+}
+.hero__headline {
+  /* Escape the content column so the last line can reach the product */
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;                 /* failsafe FIRST */
+  font-size: clamp(3.25rem, 9.4vw, 10rem);
+  line-height: 0.95;
+  position: relative;
+  z-index: 2;                          /* sit above the product */
+}
+.hero__product {
+  position: absolute;
+  right: -6%;                          /* bleed off right edge */
+  bottom: 0;
+  width: 58%;
+  z-index: 1;
+}
+```
+
+**Do NOT:**
+- Cap the headline with a content-column `max-width` (e.g. `820px`). That traps it inside its column and kills the overlap.
+- Shrink `font-size` to fix a wrap issue. Smaller type stops reaching far enough to touch the product, and the overlap dies. Use the `nowrap` failsafe or rewrite the line instead.
+- Stack headline and product in two flex columns with a `gap`. That valley is dead space and reads as templated.
+- Trust static/PIL font metrics to predict overlap. Variable-font browser rendering differs from what any offline library computes. Measure with `getBoundingClientRect` in-browser and iterate visually. Art direction is iterative by nature.
+
+**The rule when overlap is the right call:** headline and product share the same pixels, with ~50% intentional intersection. Never a visible gutter between them.
+
+### Background performance note (pairs with Tell #33):
+
+When you delete a `filter: blur(100px)` blob background per Tell #33, reach for inline SVG with path `d` updates in `requestAnimationFrame` instead. SVG path morphing is WAY cheaper on the GPU than CSS `filter: blur()`, which forces a full-layer repaint every frame. A 40-point polyline animated in rAF runs smoothly on low-end laptops where a blurred gradient chokes. Bonus: SVG can carry product meaning (contour lines for audio, waveforms for music, orbit lines for astronomy, isobars for weather) that a blurred blob never can.
+
 ---
 
 ## SECTION J: SVG DECORATION PATTERNS
@@ -674,6 +716,58 @@ document.addEventListener('mousemove', (e) => {
 - **The background underneath must be visually complete:** gradient, noise texture, pattern, or solid color. The cursor glow is ENHANCEMENT, not the background itself.
 - **Opacity of glow: 0.05-0.15.** Above 0.2 is distracting.
 - **Restore `cursor: pointer` on all interactive elements** so users know what's clickable.
+
+### STATE TRANSITION RULE (applies to ALL rAF loops, not just cursor effects):
+
+In any `requestAnimationFrame` loop, NEVER boolean-toggle a value that affects visual output. If a state change happens in a single frame and it is visible, it will read as a glitch. Every state transition must be interpolated toward a target, not assigned directly. This same rule also kills cursor-effect discontinuities: any hard sign-flip (`y < cy ? -bump : bump`) at a specific coordinate creates a visible seam right where the user is looking. Replace sign flips with smooth directional falloff (see "smooth parting" below).
+
+**The principle:** target values are discrete, current values are continuous, and the render loop ONLY reads current values. Boolean flags (`isActive`, `isHovered`) and event listeners write to `target*` variables only. They never directly affect output.
+
+```js
+// BAD: boolean toggle causes a one-frame snap on pointerleave.
+let cursorActive = false;
+hero.addEventListener('pointerleave', () => { cursorActive = false; });
+
+const frame = (t) => {
+  const k = cursorActive ? 0.22 : 0;   // snaps 0.22 -> 0 in one frame
+  // ...push calculation uses k...
+};
+
+// GOOD: target/current split, smooth fade on pointerleave.
+const K_ACTIVE = 0.22;
+let currentK = 0, targetK = 0;
+hero.addEventListener('pointerleave', () => { targetK = 0; });
+hero.addEventListener('pointermove',  () => { targetK = K_ACTIVE; });
+
+const frame = (t) => {
+  currentK += (targetK - currentK) * 0.06;   // ~20 frames to settle
+  const k = currentK;
+  // ...push calculation uses smoothed k...
+};
+```
+
+**Smooth parting (no sign-flip discontinuity):** when a cursor "pushes" elements away (contour lines, particles, grid points), never use `y < cy ? -bump : bump`. The direction snaps at the cursor line and reads as a glitch. Use `ddy * falloff * k` instead. The signed distance from the cursor (`ddy`) carries the direction naturally, falloff is exactly 0 at the cursor, and the push grows smoothly with distance. No seam.
+
+```js
+// BAD: hard sign flip at y = cy creates a visible horizontal seam.
+const bump = strength * Math.exp(-(ddx * ddx) / (2 * sigmaX * sigmaX)
+                                 -(ddy * ddy) / (2 * sigmaY * sigmaY));
+y += (y < cy ? -bump : bump);
+
+// GOOD: signed falloff, zero at cursor, grows smoothly outward.
+const falloff = Math.exp(-(ddx * ddx) / (2 * sigmaX * sigmaX)
+                         -(ddy * ddy) / (2 * sigmaY * sigmaY));
+y += ddy * falloff * k;
+```
+
+**Checklist for every interactive rAF animation:**
+1. What values does the render loop read each frame? (positions, strengths, colors, opacities, rotations.)
+2. For each one, is it assigned directly anywhere, or always lerped toward a target?
+3. If assigned directly, can that assignment happen mid-interaction? If yes, it is a snap waiting to happen. Convert to `current += (target - current) * rate`.
+4. Event listeners write to `target*` variables only. Never to `current*` variables.
+5. Every boolean that gates rendering (`isActive`, `isHovered`, `isVisible`) gets a corresponding interpolated scalar (`activeAmount`, `hoveredAmount`, `visibleAmount`) that the render loop actually reads.
+
+**The meta-rule:** if a human can perceive a single frame of your animation, that frame is a bug. 60fps means each frame is ~16ms. Anything that completes in one frame is imperceptible in the middle of motion but catastrophic at the edges. That is exactly where you will see a snap.
 
 ---
 
