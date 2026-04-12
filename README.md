@@ -15,7 +15,7 @@ Same brand brief. Same model. The only difference is the skill.
 
 ## Install
 
-Run this inside your project folder. It creates `.claude/skills/anti-slop-ui/` and wires the skill into `.claude/CLAUDE.md` so Claude loads it on any frontend task.
+Run this from anywhere. It installs to `~/.claude/skills/anti-slop-ui/` (global) and wires the skill into `~/.claude/CLAUDE.md` so Claude loads it in every project.
 
 **macOS and Linux**
 
@@ -29,7 +29,7 @@ curl -sL https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/insta
 irm https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.ps1 | iex
 ```
 
-That is the whole install. Next time you run `claude`, the skill is registered as `/anti-slop-ui`.
+One install. Works globally. Next time you run `claude` in any project, the skill is registered as `/anti-slop-ui`.
 
 ## Use it
 
@@ -96,21 +96,21 @@ Three Markdown files. No runtime, no dependencies, no build step. Stack-agnostic
 
 ## How it works under the hood
 
-1. The installer drops `SKILL.md`, `BRAIN.md`, and `PREMIUM.md` into `.claude/skills/anti-slop-ui/`.
-2. It appends a reference to your project's `.claude/CLAUDE.md` so Claude reads the skill before any frontend task.
+1. The installer drops `SKILL.md`, `BRAIN.md`, and `PREMIUM.md` into `~/.claude/skills/anti-slop-ui/` (global).
+2. It appends a reference to `~/.claude/CLAUDE.md` so Claude reads the skill before any frontend task in any project.
 3. Invoke with `/anti-slop-ui [optional prompt]`, or let it activate passively on frontend tasks via the CLAUDE.md reference. Either path runs the intake and applies the matching design system.
 4. For Level 4-5 builds, Claude loads `PREMIUM.md` on demand for the full offensive playbook. Lower impression levels skip it to save tokens.
 5. Before declaring the task done, Claude self-audits against the 33 tells and the pre-ship checklist.
 
-If you already have a `CLAUDE.md`, the installer appends without overwriting. If you do not, it creates one.
+If you already have a `~/.claude/CLAUDE.md`, the installer appends without overwriting. If you do not, it creates one.
 
 ## Uninstall
 
 ```bash
-rm -rf .claude/skills/anti-slop-ui
+rm -rf ~/.claude/skills/anti-slop-ui
 ```
 
-Then remove the `## Skills` block from `.claude/CLAUDE.md`.
+Then remove the `## Skills` block from `~/.claude/CLAUDE.md`.
 
 ## License
 

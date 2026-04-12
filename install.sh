@@ -1,54 +1,65 @@
 #!/bin/bash
 # Anti-Slop-UI: one-command installer
 #
-# HOW TO USE:
-# 1. cd into your project folder
-# 2. Run: curl -sL https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.sh | bash
+# Run from anywhere:
+#   curl -sL https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.sh | bash
 #
-# WHAT IT DOES:
-# - Creates .claude/skills/anti-slop-ui/ in your project
-# - Downloads SKILL.md, BRAIN.md, and PREMIUM.md into it
-# - Adds the skill reference to your .claude/CLAUDE.md
-# - That's it. Next time you run "claude", the skill is active.
+# Installs to ~/.claude/skills/anti-slop-ui/ (global, works in every project)
 
 set -e
 
 REPO="https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main"
-DIR=".claude/skills/anti-slop-ui"
+DIR="$HOME/.claude/skills/anti-slop-ui"
+CLAUDE_MD="$HOME/.claude/CLAUDE.md"
 
+# Colors
+R="\033[0m"
+DIM="\033[2m"
+BOLD="\033[1m"
+GREEN="\033[32m"
+CYAN="\033[36m"
+WHITE="\033[97m"
+
+clear 2>/dev/null || true
 echo ""
-echo "  Installing anti-slop-ui v1.0"
-echo "  Stop your sites from looking AI-generated"
+echo -e "  ${DIM}───────────────────────────────────────${R}"
+echo -e "  ${BOLD}${WHITE}anti-slop-ui${R}"
+echo -e "  ${DIM}stop your sites from looking AI-generated${R}"
+echo -e "  ${DIM}───────────────────────────────────────${R}"
 echo ""
 
 # Create skill directory
 mkdir -p "$DIR"
-echo "  [1/5] Created $DIR"
+echo -e "  ${DIM}[1/5]${R} ${GREEN}created${R}  ${DIM}~/.claude/skills/anti-slop-ui/${R}"
 
 # Download skill files
 curl -sL "$REPO/SKILL.md" -o "$DIR/SKILL.md"
-echo "  [2/5] Downloaded SKILL.md"
+echo -e "  ${DIM}[2/5]${R} ${GREEN}fetched${R}  SKILL.md  ${DIM}(33 tells, design system, checklists)${R}"
 
 curl -sL "$REPO/BRAIN.md" -o "$DIR/BRAIN.md"
-echo "  [3/5] Downloaded BRAIN.md"
+echo -e "  ${DIM}[3/5]${R} ${GREEN}fetched${R}  BRAIN.md  ${DIM}(reasoning architecture)${R}"
 
 curl -sL "$REPO/PREMIUM.md" -o "$DIR/PREMIUM.md"
-echo "  [4/5] Downloaded PREMIUM.md"
+echo -e "  ${DIM}[4/5]${R} ${GREEN}fetched${R}  PREMIUM.md  ${DIM}(level 4-5 offensive playbook)${R}"
 
-# Wire up CLAUDE.md
-mkdir -p .claude
-if [ -f ".claude/CLAUDE.md" ]; then
-  if ! grep -q "anti-slop-ui" ".claude/CLAUDE.md"; then
-    printf "\n## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n- For Level 4-5 builds, also read \`.claude/skills/anti-slop-ui/PREMIUM.md\`\n" >> ".claude/CLAUDE.md"
-    echo "  [5/5] Added skill reference to existing CLAUDE.md"
+# Wire up global CLAUDE.md
+mkdir -p "$HOME/.claude"
+if [ -f "$CLAUDE_MD" ]; then
+  if ! grep -q "anti-slop-ui" "$CLAUDE_MD"; then
+    printf "\n## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n- For Level 4-5 builds, also read \`.claude/skills/anti-slop-ui/PREMIUM.md\`\n" >> "$CLAUDE_MD"
+    echo -e "  ${DIM}[5/5]${R} ${GREEN}wired${R}   ~/.claude/CLAUDE.md  ${DIM}(skill reference added)${R}"
   else
-    echo "  [5/5] CLAUDE.md already references anti-slop-ui (skipped)"
+    echo -e "  ${DIM}[5/5]${R} ${GREEN}wired${R}   ~/.claude/CLAUDE.md  ${DIM}(already configured)${R}"
   fi
 else
-  printf "## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n- For Level 4-5 builds, also read \`.claude/skills/anti-slop-ui/PREMIUM.md\`\n" > ".claude/CLAUDE.md"
-  echo "  [5/5] Created CLAUDE.md with skill reference"
+  printf "## Skills\n- Read \`.claude/skills/anti-slop-ui/SKILL.md\` before any frontend work\n- For complex builds, also read \`.claude/skills/anti-slop-ui/BRAIN.md\`\n- For Level 4-5 builds, also read \`.claude/skills/anti-slop-ui/PREMIUM.md\`\n" > "$CLAUDE_MD"
+  echo -e "  ${DIM}[5/5]${R} ${GREEN}wired${R}   ~/.claude/CLAUDE.md  ${DIM}(created)${R}"
 fi
 
 echo ""
-echo "  Done! Run 'claude' in this project to start building."
+echo -e "  ${BOLD}${WHITE}installed.${R} run ${CYAN}claude${R} in any project, then:"
+echo ""
+echo -e "    ${WHITE}/anti-slop-ui${R}  ${DIM}build a landing page for ...${R}"
+echo ""
+echo -e "  ${DIM}works globally. no per-project setup needed.${R}"
 echo ""
