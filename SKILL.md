@@ -235,6 +235,10 @@ AI loves to italicize or color one random letter in a text-only brand wordmark (
 The 2024-2025 AI signature move: `filter: blur(100px)` (or higher) applied to saturated radial gradients, combined with morphing `border-radius: 60% 40% 30% 70%` "blobs," often animated. Every prompt-engineered landing page has this. Changing the hue does not save you. Tell #1 is about the color; this is about the TECHNIQUE. Warm lighting blobs, aurora blobs, lavender blobs, amber blobs, teal blobs are all the same category of slop. If you reach for `filter: blur(100px)` on a gradient div, you are building a vibe-coded background.
 - FIX: Before typing `filter: blur`, ask: "Does this shape answer a question the product cares about?" Backgrounds must be argumentative, not atmospheric. A contour map on an audio product works because topographic lines = frequency curves. Warm lighting on the same product does not. If the background cannot finish the sentence "this exists because [product reason]," delete it. Replace with a flat tinted dark, a noise texture (see PREMIUM.md Section E), or a composed inline SVG that means something to the product. For performance, SVG path updates in `requestAnimationFrame` are far cheaper on the GPU than `filter: blur()` and can be animated smoothly.
 
+**34. Desktop-only design shipped without mobile adaptation**
+The site looks polished at 1440px but falls apart on a phone: horizontal overflow, unreadable text, untappable buttons, hero images that push the CTA below the fold, hover-dependent interactions that vanish on touch devices. AI builds for the preview window width (desktop) and never tests on a real phone. A site that 60%+ of visitors cannot use comfortably is not a finished site.
+- FIX: After completing the desktop build, run a mobile adaptation pass using MOBILE.md. Check every section at 375px. Tap every button. Scroll through every page. If the mobile version feels like a shrunken desktop instead of a phone-designed experience, it is not done.
+
 ---
 
 ## STEP 2: APPLY LEVEL-SPECIFIC DESIGN SYSTEM
@@ -395,6 +399,7 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **No `filter: blur()` morphing blob backgrounds?** (No saturated gradients blurred to 100px+ with morphing border-radius. Changing the hue does not save you.)
 - [ ] **Every visual element passes the Conceptual Grounding Test?** (Can you finish "this exists because [product reason]" for every background, shape, animation, and decoration? If no, delete it.)
 - [ ] **`-webkit-font-smoothing: antialiased` set on html?** (One line, instant premium text rendering)
+- [ ] **Mobile adaptation pass complete?** (Read MOBILE.md. Test at 375px, 390px, 412px on a real phone. Tap every button. Scroll every section. If the mobile version feels like a shrunken desktop, it is not done.)
 
 ### Level 1-2 Additional Checks
 
