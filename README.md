@@ -15,15 +15,26 @@ Same brand brief. Same model. The only difference is the skill.
 
 ## Install
 
-Run this from anywhere. The installer auto-detects your editors and asks which to configure.
+**Claude Code (recommended)**
 
-**macOS and Linux**
+```
+/plugin marketplace add awaken7050dev/anti-slop-ui
+/plugin install anti-slop-ui@anti-slop-ui
+```
+
+Two commands. The skill registers as `/anti-slop-ui` and activates on frontend tasks automatically.
+
+**Cursor, Windsurf, or manual install**
+
+The shell installer auto-detects your editors and asks which to configure.
+
+macOS and Linux:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.sh | bash
 ```
 
-**Windows (PowerShell)**
+Windows (PowerShell):
 
 ```powershell
 irm https://raw.githubusercontent.com/awaken7050dev/anti-slop-ui/main/install.ps1 | iex
@@ -93,9 +104,8 @@ Four Markdown files. No runtime, no dependencies, no build step. Stack-agnostic:
 
 ## How it works under the hood
 
-1. The installer asks which editor to configure, then drops the four skill files into the appropriate global skills directory (`~/.claude/skills/`, `~/.cursor/skills/`, or `~/.windsurf/skills/`).
-2. It wires the skill into the editor's config: `CLAUDE.md` for Claude Code, a `.mdc` rule file for Cursor, or a rules markdown for Windsurf.
-3. The skill activates on frontend tasks. For Claude Code, invoke with `/anti-slop-ui [optional prompt]` or let it trigger passively. For Cursor and Windsurf, it activates automatically on frontend files.
+1. **Claude Code plugin:** Install from the marketplace. The plugin system handles file placement and activation. Invoke with `/anti-slop-ui [optional prompt]` or let it trigger passively on frontend tasks.
+2. **Cursor/Windsurf:** The shell installer drops the four skill files into the appropriate global skills directory and wires a rule file for automatic activation on frontend files.
 4. For Level 4-5 builds, the AI loads `PREMIUM.md` on demand for the full offensive playbook. Lower impression levels skip it to save tokens.
 5. After the desktop build is complete, the AI reads `MOBILE.md` and runs a mobile adaptation pass: fluid typography, touch targets, safe areas, animation performance, responsive images.
 6. Before declaring the task done, the AI self-audits against the 34 tells and the pre-ship checklist.

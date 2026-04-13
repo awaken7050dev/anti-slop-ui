@@ -81,7 +81,7 @@ for EDITOR in $EDITORS; do
   STEP=1
   for FILE in SKILL.md BRAIN.md PREMIUM.md MOBILE.md; do
     STEP=$((STEP + 1))
-    curl -sL "$REPO/$FILE" -o "$DIR/$FILE"
+    curl -sL "$REPO/skills/anti-slop-ui/$FILE" -o "$DIR/$FILE"
     case "$FILE" in
       SKILL.md)   DESC="(34 tells, design system, checklists)" ;;
       BRAIN.md)   DESC="(reasoning architecture)" ;;

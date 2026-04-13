@@ -86,7 +86,7 @@ foreach ($Editor in $Editors) {
     $Step = 1
     foreach ($F in $Files) {
         $Step++
-        Invoke-WebRequest -Uri "$Repo/$($F.Name)" -OutFile "$Dir\$($F.Name)" -UseBasicParsing
+        Invoke-WebRequest -Uri "$Repo/skills/anti-slop-ui/$($F.Name)" -OutFile "$Dir\$($F.Name)" -UseBasicParsing
         Write-Host "    " -NoNewline
         Write-Host "[$Step/6]" -ForegroundColor DarkGray -NoNewline
         Write-Host " fetched" -ForegroundColor Green -NoNewline

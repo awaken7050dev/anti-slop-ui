@@ -1,0 +1,10 @@
+{
+  "name": "anti-slop-ui",
+  "description": "Eliminate the AI-generated look from any frontend. 34 tells with concrete fixes, design tokens, component patterns, mobile adaptation pass, and battle scars from real projects.",
+  "version": "1.0.0",
+  "author": {
+    "name": "awaken7050dev"
+  },
+  "repository": "https://github.com/awaken7050dev/anti-slop-ui",
+  "license": "MIT"
+}
