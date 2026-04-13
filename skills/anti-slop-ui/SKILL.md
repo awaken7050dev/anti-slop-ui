@@ -99,7 +99,17 @@ These are the patterns that make ANY site instantly recognizable as AI-generated
 
 ### Before applying any of the rules below: The Conceptual Grounding Test
 
-Every element on the page must finish this sentence: "This exists because [product/user reason]." If you cannot finish the sentence, delete the element. Gradients, blobs, aurora lights, floating particles, decorative shapes, filler marquees, and stock hero sections all fail this test by default. Visuals must ARGUE for the product, not decorate around it. A topographic contour background on an audio product works because topographic lines = frequency curves. Warm lighting on the same product fails because lighting has no product reason. Decoration with no argument is the root of every tell in this list. If you are picking visuals from a vibe menu ("warm lighting," "aurora blobs," "glassmorphism feels premium") without a reason tied to the product, you are building slop. Stop, pitch the idea in one sentence, get approval, then build.
+Every element on the page must finish this sentence: "This exists because [product/user reason]." If you cannot finish the sentence, delete the element. Gradients, blobs, aurora lights, floating particles, decorative shapes, filler marquees, and stock hero sections all fail this test by default. Visuals must ARGUE for the product, not decorate around it. Decoration with no argument is the root of every tell in this list. If you are picking visuals from a vibe menu ("warm lighting," "aurora blobs," "glassmorphism feels premium") without a reason tied to the product, you are building slop. Stop, pitch the idea in one sentence, get approval, then build.
+
+**CRITICAL: Every product gets a DIFFERENT background concept.** Do not reuse the same visual motif across different products. Before choosing a background, ask: "What is the ONE physical or functional trait unique to THIS product?" Then derive the background from that trait. Examples of correct grounding (do NOT copy these, derive your own from the specific product):
+- Audio product: waveform or frequency spectrum shapes (sound is the product)
+- Chef's knife: Damascus steel layer patterns or hammered metal texture (the forging process is the product)
+- Finance app: candlestick chart silhouettes or ledger grid lines (data structure is the product)
+- Architecture firm: blueprint grid or structural wireframe (building process is the product)
+- Coffee roaster: topographic contour of growing regions (origin is the product)
+- Telescope: star field with actual constellation data (observation is the product)
+
+If your chosen background concept was already used on a DIFFERENT site in this conversation, pick a new one. Repeating backgrounds across products is the same convergence problem as Tell #1.
 
 ### The Tells of Vibe Code (and their fixes)
 
@@ -233,7 +243,7 @@ AI loves to italicize or color one random letter in a text-only brand wordmark (
 
 **33. Filter-blur morphing blob backgrounds**
 The 2024-2025 AI signature move: `filter: blur(100px)` (or higher) applied to saturated radial gradients, combined with morphing `border-radius: 60% 40% 30% 70%` "blobs," often animated. Every prompt-engineered landing page has this. Changing the hue does not save you. Tell #1 is about the color; this is about the TECHNIQUE. Warm lighting blobs, aurora blobs, lavender blobs, amber blobs, teal blobs are all the same category of slop. If you reach for `filter: blur(100px)` on a gradient div, you are building a vibe-coded background.
-- FIX: Before typing `filter: blur`, ask: "Does this shape answer a question the product cares about?" Backgrounds must be argumentative, not atmospheric. A contour map on an audio product works because topographic lines = frequency curves. Warm lighting on the same product does not. If the background cannot finish the sentence "this exists because [product reason]," delete it. Replace with a flat tinted dark, a noise texture (see PREMIUM.md Section E), or a composed inline SVG that means something to the product. For performance, SVG path updates in `requestAnimationFrame` are far cheaper on the GPU than `filter: blur()` and can be animated smoothly.
+- FIX: Before typing `filter: blur`, ask: "Does this shape answer a question the product cares about?" Backgrounds must be argumentative, not atmospheric. Derive the background from the product's unique physical or functional trait (see the Conceptual Grounding Test above for examples). If the background cannot finish the sentence "this exists because [product reason]," delete it. Replace with a flat tinted dark, a noise texture (see PREMIUM.md Section E), or a composed inline SVG that means something to the product. For performance, SVG path updates in `requestAnimationFrame` are far cheaper on the GPU than `filter: blur()` and can be animated smoothly.
 
 **34. Desktop-only design shipped without mobile adaptation**
 The site looks polished at 1440px but falls apart on a phone: horizontal overflow, unreadable text, untappable buttons, hero images that push the CTA below the fold, hover-dependent interactions that vanish on touch devices. AI builds for the preview window width (desktop) and never tests on a real phone. A site that 60%+ of visitors cannot use comfortably is not a finished site.
