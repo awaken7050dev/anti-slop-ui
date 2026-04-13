@@ -101,15 +101,17 @@ These are the patterns that make ANY site instantly recognizable as AI-generated
 
 Every element on the page must finish this sentence: "This exists because [product/user reason]." If you cannot finish the sentence, delete the element. Gradients, blobs, aurora lights, floating particles, decorative shapes, filler marquees, and stock hero sections all fail this test by default. Visuals must ARGUE for the product, not decorate around it. Decoration with no argument is the root of every tell in this list. If you are picking visuals from a vibe menu ("warm lighting," "aurora blobs," "glassmorphism feels premium") without a reason tied to the product, you are building slop. Stop, pitch the idea in one sentence, get approval, then build.
 
-**CRITICAL: Every product gets a DIFFERENT background concept.** Do not reuse the same visual motif across different products. Before choosing a background, ask: "What is the ONE physical or functional trait unique to THIS product?" Then derive the background from that trait. Examples of correct grounding (do NOT copy these, derive your own from the specific product):
+**CRITICAL: Derive the background from THIS product's unique trait.** Before choosing a background, ask: "What is the ONE physical or functional trait unique to THIS specific product?" Then build the background from that trait alone. Do NOT borrow visual motifs from other industries. A knife site does not get audio waveforms. A finance app does not get steel textures. The background must be obvious to someone who knows the product and nonsensical to someone who doesn't.
+
+Examples of correct derivation (these illustrate the thinking process, not templates to copy):
 - Audio product: waveform or frequency spectrum shapes (sound is the product)
 - Chef's knife: Damascus steel layer patterns or hammered metal texture (the forging process is the product)
 - Finance app: candlestick chart silhouettes or ledger grid lines (data structure is the product)
 - Architecture firm: blueprint grid or structural wireframe (building process is the product)
-- Coffee roaster: topographic contour of growing regions (origin is the product)
+- Coffee roaster: elevation contour of growing regions (origin is the product)
 - Telescope: star field with actual constellation data (observation is the product)
 
-If your chosen background concept was already used on a DIFFERENT site in this conversation, pick a new one. Repeating backgrounds across products is the same convergence problem as Tell #1.
+If the product is not in this list, you MUST derive your own. The examples above are NOT a menu. Picking one that "feels close" is the same mistake as picking a purple gradient because it "feels premium."
 
 ### The Tells of Vibe Code (and their fixes)
 
@@ -433,7 +435,7 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **Micro-interactions on buttons, inputs, cards?** (Press, focus glow, hover lift)
 - [ ] **Noise/grain texture on at least one background section?**
 - [ ] **Background is not a flat solid color?** (Gradient, texture, pattern, or layered depth)
-- [ ] **Anti-convergence: different font pairing than last generation?**
+- [ ] **Font pairing matches this specific brand's personality?** (Not the first option in the list)
 - [ ] **Page looks complete WITHOUT cursor movement?** (Test by not moving mouse for 10s)
 
 ---

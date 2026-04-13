@@ -10,7 +10,7 @@ This file teaches Claude HOW to create premium visual design, not just what to a
 
 Do NOT pick fonts randomly. Match the pairing to the site's context. Each entry includes the exact Google Fonts import URL. Copy-paste it, don't reconstruct it.
 
-**ANTI-CONVERGENCE RULE:** Never use the same font pairing twice in the same session. If you already used Fraunces + Albert Sans for a previous generation, pick a different pairing for the next one.
+**ANTI-CONVERGENCE RULE:** Pick the font pairing that best matches the product's personality and audience. Do not default to the first pairing in this list. Read all options, then choose the one with the strongest fit for the specific brand.
 
 ### 1. Fraunces + Albert Sans
 **Vibe:** Warm editorial, organic, human
@@ -828,7 +828,7 @@ document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
 ## CONCEPTUAL BACKGROUND BANK
 
-Every Level 4-5 hero background must pass the Conceptual Grounding Test: "this exists because [product reason]." The problem: if this skill gives ONE example (contour lines for audio), Claude will reuse that same example every single time. The bank below provides 6-8 pre-validated conceptual mappings per product category so Claude picks a DIFFERENT one each build.
+Every Level 4-5 hero background must pass the Conceptual Grounding Test: "this exists because [product reason]." The bank below provides pre-validated conceptual mappings per product category. If the product matches a category, pick the mapping with the strongest connection to the SPECIFIC brand, not the first one in the list. If the product does not match any category, derive your own using the same logic: find the one physical or functional trait unique to the product and build the visual from that.
 
 ### Product Category Mappings
 
@@ -930,7 +930,7 @@ generate_seed()  # Pass a category string to target a specific product type.
 ### Rules for Using the Bank
 
 - All entries in the bank are pre-validated as argumentative. They pass the Conceptual Grounding Test by design: every mapping ties back to the product domain, not to decoration.
-- Claude MUST pick a different concept than its last generation for the same product category. Repeating the same concept across consecutive builds defeats the purpose of the bank.
+- Pick the concept with the strongest connection to the SPECIFIC brand, not the first one in the list. Read all options before choosing.
 - If Claude genuinely cannot find a good fit from the bank for an unusual product, it may pause and ask the user which direction to take. This is not recommended for standard builds but is acceptable for edge cases where the product does not fit any listed category.
 - The bank is a starting point, not a ceiling. Claude can invent NEW conceptual mappings as long as they pass the grounding test. If a new mapping is strong, it earns a place in the bank.
 
@@ -940,7 +940,7 @@ generate_seed()  # Pass a category string to target a specific product type.
 
 Even with these patterns, Claude may converge on a new "premium default." Check:
 
-- [ ] Did I use a different font pairing than my last generation?
+- [ ] Does the font pairing match the brand personality (not just the first option in the list)?
 - [ ] Is the hue outside 200-280? (Or blue paired with warm accent?)
 - [ ] Are shadows layered (3+ layers), not single?
 - [ ] Do animations use spring curves, not browser defaults?
@@ -950,5 +950,4 @@ Even with these patterns, Claude may converge on a new "premium default." Check:
 - [ ] Does the page look complete WITHOUT cursor movement?
 - [ ] Is `-webkit-font-smoothing: antialiased` set?
 - [ ] Does `prefers-reduced-motion` disable all animations?
-- [ ] Is my hero background concept different from my last generation for this product category?
-- [ ] Did I run the concept seed generator before starting?
+- [ ] Is the hero background derived from THIS product's unique trait (not borrowed from another industry)?
