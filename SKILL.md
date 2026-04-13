@@ -23,21 +23,21 @@ If the user's prompt already implies answers (e.g., "build me a dashboard for ou
 Options: `Enterprise/Executive` | `Developer/Technical` | `Consumer/General` | `Creative/Portfolio` | `Internal Tool`
 
 Quick reference (don't show this to user, use it internally):
-- Enterprise → clean, restrained, light mode, exportable (FactSet, Salesforce, Bloomberg)
-- Developer → dense, keyboard-driven, dark OK, monospace (Linear, Vercel, GitHub)
-- Consumer → friendly, spacious, rounded, mobile-first (Airbnb, Notion, Spotify)
-- Creative → bold, distinctive, editorial, rule-breaking (Awwwards, Framer)
-- Internal → functional, boring, fast, zero learning curve (AWS Console, Retool)
+- Enterprise → clean, restrained, light mode, exportable, institutional trust
+- Developer → dense, keyboard-driven, dark OK, monospace, command-palette UX
+- Consumer → friendly, spacious, rounded, mobile-first, approachable
+- Creative → bold, distinctive, editorial, rule-breaking, portfolio-grade
+- Internal → functional, boring, fast, zero learning curve, admin-panel density
 
 **Q2: Visual energy level?**
 Options: `1 Invisible` | `2 Restrained` | `3 Balanced` | `4 Expressive` | `5 Spectacular`
 
 Quick reference (don't show this to user):
-- 1 = Bloomberg. Data only. Zero decoration.
-- 2 = Stripe Dashboard. Professional. Institutional.
-- 3 = Notion. Modern SaaS. The good default.
-- 4 = Raycast. Design is part of the experience.
-- 5 = Apple. Every pixel intentional.
+- 1 = Data terminal. Information density is the product. Zero decoration.
+- 2 = Professional dashboard. Clean hierarchy. Institutional trust.
+- 3 = Modern SaaS. The good default. Balanced polish.
+- 4 = Design-forward tool. Memorable and opinionated.
+- 5 = Product showcase. Every pixel considered. Editorial craft.
 
 **Q3: Light or dark?**
 Options: `Light mode` | `Dark mode` | `Both`
@@ -212,15 +212,15 @@ AI locks hero height to `100dvh`, headline size to `clamp(56px, 9.2vw, 152px)`, 
 - FIX: Use `rem` for type sizing, not `vw`. Let hero sections flow with content height instead of locking to `dvh`. Reserve viewport units for full-screen landing heroes only, and even then, set them as `min-height: 100dvh` not `height: 100dvh` so content can overflow if zoomed.
 
 **28. Theatrical cosplay elements masquerading as UI chrome**
-AI sees a themed concept (military, cyberpunk, retro, noir, defense) and tries to reinforce it by dressing the browser chrome in costume. A defense-themed site gets a "CLASSIFIED · TIER III ACCESS · AUTHORIZED PERSONNEL ONLY" strip above the nav. A cyberpunk site gets "SYSTEM.LOG // 2087.11.02 :: CONNECTION SECURE" in the footer. A retro site gets a fake CRT scanline overlay and a fake "CH 01" TV channel indicator. Real companies in those industries (Palantir, BAE, Rheinmetall, Shield AI) don't do any of this. Their marketing sites look like normal marketing sites. The theme belongs in the typography, palette, copy tone, photography, and product language. The browser chrome (nav, banners, headers, footers, cookie notices) stays realistic. **The principle: themed aesthetic is not the same as themed props. Typography and copy carry the theme. UI chrome stays realistic.**
-- FIX: Before shipping any themed UI element, ask: "Would this look at home on a movie set, or on an actual company's homepage?" If it belongs on a movie set, delete it. The hero headline, section copy, photography, color palette, and product names do the theming work. The nav bar, the footer links, the cookie notice, and the header should look like a real website built by a real company. If you want your site to feel like Palantir, the copy and photography create that feeling. Palantir's actual nav bar still looks like a normal website.
+AI sees a themed concept (military, cyberpunk, retro, noir, defense) and tries to reinforce it by dressing the browser chrome in costume. A defense-themed site gets a "CLASSIFIED · TIER III ACCESS · AUTHORIZED PERSONNEL ONLY" strip above the nav. A cyberpunk site gets "SYSTEM.LOG // 2087.11.02 :: CONNECTION SECURE" in the footer. A retro site gets a fake CRT scanline overlay and a fake "CH 01" TV channel indicator. Real companies in those industries don't do any of this. Their marketing sites look like normal marketing sites. The theme belongs in the typography, palette, copy tone, photography, and product language. The browser chrome (nav, banners, headers, footers, cookie notices) stays realistic. **The principle: themed aesthetic is not the same as themed props. Typography and copy carry the theme. UI chrome stays realistic.**
+- FIX: Before shipping any themed UI element, ask: "Would this look at home on a movie set, or on an actual company's homepage?" If it belongs on a movie set, delete it. The hero headline, section copy, photography, color palette, and product names do the theming work. The nav bar, the footer links, the cookie notice, and the header should look like a real website built by a real company. The copy and photography create the feeling. The nav bar still looks like a normal website.
 
 **29. Eccentric Unicode glyphs as section markers for fake institutional credibility**
 AI reaches for unusual Unicode characters (§, ¶, ※, ◆, ∞, ☰, ◎, ⟡, ❖) as section markers because they "feel" sophisticated or institutional. The most common offender is the section sign § in front of numbered sections: `§01 / DIVISIONS`, `§02 / CAPABILITIES`, `§03 / APPROACH`. To a typography nerd it reads as "legal document, government report, academic paper." To a normal visitor it looks weird and affected, like the site is cosplaying a textbook instead of communicating. Real companies use plain numbers (`01`, `02`) or plain words (`Section 1`, `Overview`, `Approach`).
 - FIX: Section markers are `01`, `02`, `03` or `Section 1`, `Overview`, `Approach`. Never use §, ¶, ※, ◆, ∞, ☰, ◎, or other eccentric glyphs as markers. If you're tempted to reach for one, you're designing a prop, not a label. The only acceptable special characters in a section label are the period or slash as separators (for example, `01 / Divisions` or `Section 1. Overview`).
 
 **30. Decorative horizontal dashes and lines before uppercase eyebrow labels**
-The AI move: a small horizontal line, pipe, or dash sitting to the left of a tracked uppercase label (`— ESTABLISHED BREMEN`, `|| OVERVIEW`, `▸ FEATURES`), often implemented as `<span class="line"></span>` or a `::before` pseudo-element with `content: "—"`. Every vibe-coded landing page has this. It is cheap visual polish that "frames" the label. Real editorial sites (Bloomberg, The Verge, Stripe, Linear) almost never do it. A tracked, uppercase, mono-font label already signals "this is a label" through typography alone. Adding a dash or a line next to it is belt-and-suspenders design: redundant, decorative, and instantly recognizable as AI.
+The AI move: a small horizontal line, pipe, or dash sitting to the left of a tracked uppercase label (`— ESTABLISHED BREMEN`, `|| OVERVIEW`, `▸ FEATURES`), often implemented as `<span class="line"></span>` or a `::before` pseudo-element with `content: "—"`. Every vibe-coded landing page has this. It is cheap visual polish that "frames" the label. Real editorial and SaaS sites almost never do it. A tracked, uppercase, mono-font label already signals "this is a label" through typography alone. Adding a dash or a line next to it is belt-and-suspenders design: redundant, decorative, and instantly recognizable as AI.
 - FIX: Delete the horizontal line, the dash prefix, the pseudo-element, and any `::before { content: "—" }` decoration. The label stands on its own. If it needs more visual separation from the content below it, add vertical margin, not a horizontal prop. Test: cover the dash or line with your finger and see if the label still looks like a label. It will, because letter-spacing and case are already doing the work. The dash was never needed.
 
 **31. Header that hides and reveals on scroll**
@@ -465,7 +465,7 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 ### For Level 1-2 (Professional)
 - **Body:** Inter (yes, it's common, but at this level "invisible" is the goal)
 - **Numbers/Data:** JetBrains Mono with `font-variant-numeric: tabular-nums lining-nums`
-- **Alternative body:** Geist (Vercel's font — less common than Inter, same quality)
+- **Alternative body:** Geist (less common than Inter, same quality, self-host from the open-source repo)
 
 ### For Level 3 (Modern SaaS)
 - **Display:** Satoshi, General Sans, or Plus Jakarta Sans
@@ -487,28 +487,27 @@ For self-hosted (better performance): use `@font-face` with `font-display: swap`
 
 ---
 
-## STEP 7: REFERENCE INTERFACES BY LEVEL
+## STEP 7: WHAT GOOD LOOKS LIKE BY LEVEL
 
-Study these, not Dribbble. Dribbble designs don't ship — these do.
+Study shipped products, not design showcases. Design galleries reward novelty. Shipped products reward usability.
 
-### Level 1-2 References
-- **Bloomberg Terminal** — density, color restraint, typography
-- **FactSet** — light mode data density, institutional feel
-- **Stripe Dashboard** — clean hierarchy, restrained palette
-- **Palantir Foundry** — light mode enterprise analytics
-- **J.P. Morgan Salt Design System** (open source) — financial component patterns
+### Level 1-2: What to study
+- Financial data terminals: density, color restraint, monospace typography, tabular alignment
+- Enterprise analytics dashboards: light mode data density, institutional feel, export-ready layouts
+- Payment platform dashboards: clean hierarchy, restrained palette, subtle hover states
+- Open-source design systems from financial institutions: component patterns, accessibility compliance
 
-### Level 3 References
-- **Linear** — polish, animation timing, dark mode done right
-- **Notion** — light mode, subtle shadows, clean spacing
-- **Vercel Dashboard** — Geist type system, data tables
-- **Raycast** — command palette UX, keyboard-first design
+### Level 3: What to study
+- Project management tools with strong dark mode: polish, animation timing, transition choreography
+- Note-taking and collaboration apps: light mode, subtle shadows, clean spacing, content-first
+- Developer platform dashboards: type system discipline, data table patterns, monospace integration
+- Keyboard-first productivity tools: command palette UX, shortcut-driven interaction
 
-### Level 4-5 References
-- **Stripe Homepage** — animation choreography, gradient execution
-- **Linear Marketing Site** — editorial layout, scroll animations
-- **Liveblocks** — interactive demos, personality in UI
-- **Resend** — dark mode with restraint, distinctive type
+### Level 4-5: What to study
+- Payment platform marketing sites: animation choreography, gradient execution at scale
+- Developer tool marketing sites: editorial layout, scroll-triggered animations, asymmetric grids
+- Collaboration SDK sites: interactive demos embedded in marketing, personality in UI copy
+- Transactional email platforms: dark mode with restraint, distinctive typography, minimal but bold
 
 ---
 

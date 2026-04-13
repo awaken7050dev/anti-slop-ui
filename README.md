@@ -37,7 +37,7 @@ Supports **Claude Code**, **Cursor**, and **Windsurf**. One install. Works globa
 
 ```
 /anti-slop-ui build a landing page for a SaaS analytics tool
-/anti-slop-ui redesign the dashboard to look like Stripe
+/anti-slop-ui redesign the dashboard to look professional
 /anti-slop-ui this portfolio looks generic, polish it
 ```
 
@@ -52,7 +52,7 @@ That triggers the intake questions (audience, impression level, mode, stack, log
 Before writing a single line of code, the skill forces three decisions:
 
 1. **Audience.** Executive, developer, consumer, or creative. Each one has a different tolerance for density, color, and motion.
-2. **Impression level.** A 1 to 5 scale from Bloomberg Terminal to Apple product page. The level determines type scale, color usage, and how much visual weight is allowed.
+2. **Impression level.** A 1 to 5 scale from data terminal to product showcase. The level determines type scale, color usage, and how much visual weight is allowed.
 3. **Light or dark mode.** Committed upfront, so both states are designed, not retrofitted.
 
 From those answers, the AI picks the design tokens, component patterns, and layout rules that match. It then applies a 34-point filter to eliminate the most common AI tells, and runs a pre-ship checklist before declaring the work done.
@@ -71,11 +71,11 @@ The full list, the enforcement rules, a pre-ship checklist, and twenty-six battl
 ## The impression scale
 
 ```
-1   INVISIBLE      Bloomberg Terminal. Data is the product.
-2   RESTRAINED     Stripe Dashboard. Quiet and trustworthy.
-3   BALANCED       Notion. Modern SaaS defaults.
-4   EXPRESSIVE     Raycast. Memorable and opinionated.
-5   SPECTACULAR    Apple product page. Every pixel considered.
+1   INVISIBLE      Data terminal. Information is the product.
+2   RESTRAINED     Professional dashboard. Quiet and trustworthy.
+3   BALANCED       Modern SaaS. The good default.
+4   EXPRESSIVE     Design-forward tool. Memorable and opinionated.
+5   SPECTACULAR    Product showcase. Every pixel considered.
 ```
 
 Pick the wrong level and a dashboard feels like a toy, or a landing page feels like a tax form. The skill ties each level to concrete token values so the AI cannot drift.

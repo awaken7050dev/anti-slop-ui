@@ -54,7 +54,7 @@ Note: Both from fontshare.com (free).
 ### 5. Syne + Geist
 **Vibe:** Experimental, techy, future-forward
 **Best for:** Web3, crypto, experimental tech, AI products
-**Why it works:** Syne has 5 variable axes and an expanding character. Geist (Vercel's font) is technical precision.
+**Why it works:** Syne has 5 variable axes and an expanding character. Geist is technical precision (self-host from the open-source repo).
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
 ```
@@ -366,7 +366,7 @@ AI does glassmorphism wrong 90% of the time: semi-transparent boxes on flat back
 
 ## SECTION G: BORDER GLOW SYSTEM (DARK MODE)
 
-This single technique is responsible for ~50% of the "premium dark mode" feeling on Linear, Raycast, and Vercel.
+This single technique is responsible for ~50% of the "premium dark mode" feeling on high-end developer tools and productivity apps.
 
 ### Gradient border (the card appears to emit light):
 ```css
@@ -499,7 +499,7 @@ These are the tiny details that compound into "feels premium." Each is 2-5 lines
 
 Every Level 4-5 site needs ONE memorable visual moment. Claude picks the most appropriate one based on site context. Don't use more than one per site.
 
-### 1. Animated gradient background (Stripe-style):
+### 1. Animated gradient background (slow mesh drift):
 ```css
 .gradient-bg {
   background: linear-gradient(
