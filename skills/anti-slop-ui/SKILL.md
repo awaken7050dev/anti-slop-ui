@@ -1,17 +1,17 @@
 ---
 name: anti-slop-ui
-description: Eliminate AI-generated aesthetic ("vibe coded") from any website or web application. Use this skill whenever building, redesigning, or polishing any frontend — websites, dashboards, SaaS apps, landing pages, portfolios, admin panels, or any web UI. Triggers on phrases like "make it not look AI generated", "make it look professional", "polish the UI", "redesign", "it looks generic", "it looks vibe coded", "make it production-ready", or any request to improve visual quality of a web interface. Also triggers when building any new frontend from scratch to prevent vibe-coding from the start. Works with React, Next.js, Vue, Svelte, HTML/CSS, Tailwind, or any frontend stack.
+description: Eliminate AI-generated aesthetic ("vibe coded") from any website or web application. Use this skill whenever building, redesigning, or polishing any frontend (websites, dashboards, SaaS apps, landing pages, portfolios, admin panels, or any web UI). Triggers on phrases like "make it not look AI generated", "make it look professional", "polish the UI", "redesign", "it looks generic", "it looks vibe coded", "make it production-ready", or any request to improve visual quality of a web interface. Also triggers when building any new frontend from scratch to prevent vibe-coding from the start. Works with React, Next.js, Vue, Svelte, HTML/CSS, Tailwind, or any frontend stack.
 ---
 
 # Anti-Vibe-Code: The Professional Frontend Engineering Skill
 
-This skill prevents AI-generated code from looking AI-generated. It was battle-tested across real projects demoed to BCG Senior Partners, FTI Consulting executives, and sovereign wealth fund leadership — audiences who evaluate software credibility in under 3 seconds.
+This skill prevents AI-generated code from looking AI-generated. It was battle-tested across real projects demoed to senior consultants, executives, and institutional leadership: audiences who evaluate software credibility in under 3 seconds.
 
 The core insight: **vibe-coded sites all look the same because AI models converge on the same defaults.** This skill breaks that convergence by forcing intentional design decisions before any code is written.
 
 ---
 
-## STEP 0: UNDERSTAND THE CONTEXT (MANDATORY — DO THIS FIRST)
+## STEP 0: UNDERSTAND THE CONTEXT (MANDATORY, DO THIS FIRST)
 
 Before writing ANY frontend code, gather context. **Present these as interactive selectable options, NOT as a wall of text.** Use Claude Code's plan mode, `todowrite` with choices, or any interactive question UI available. The user should be able to TAP/CLICK their answer, not type a paragraph.
 
@@ -68,9 +68,9 @@ This determines nav strategy:
 ### After gathering answers, state your plan in ONE sentence:
 "Building a [Level X] [light/dark] [framework] interface for [audience]. Design tokens loaded."
 
-### For Level 4-5 ONLY — Pitch One Ambitious Idea Before Building
+### For Level 4-5 ONLY. Pitch One Ambitious Idea Before Building
 
-If the user chose Level 4 or 5, you likely have a creative idea that could take the site from good to memorable. **Pitch it in one sentence before building.** Don't explain the implementation — just describe the user-facing effect.
+If the user chose Level 4 or 5, you likely have a creative idea that could take the site from good to memorable. **Pitch it in one sentence before building.** Don't explain the implementation. Just describe the user-facing effect.
 
 Examples:
 - "What if the pricing cards do a subtle flip animation when you toggle monthly/yearly?"
@@ -80,7 +80,7 @@ Examples:
 
 Frame it as: "I have an idea that could make this stand out: [idea]. Want me to go for it, or should I keep it clean?"
 
-If the user says yes, build it. If no, proceed with standard Level 4 patterns. If they don't respond, just build with whatever context you have — don't stall.
+If the user says yes, build it. If no, proceed with standard Level 4 patterns. If they don't respond, just build with whatever context you have. Don't stall.
 
 ### Context Check
 
@@ -109,31 +109,31 @@ If you DO choose a decorative or illustrative background, it must pass this test
 
 **1. Purple/blue gradient backgrounds**
 THE #1 tell. Every AI defaults to indigo-to-purple or blue-to-cyan gradients because they dominate training data.
-- FIX: Use solid colors. If you must use a gradient, make it subtle and unusual — warm tones, single-hue gradients (light gray to slightly lighter gray), or radial ambient glows.
+- FIX: Use solid colors. If you must use a gradient, make it subtle and unusual. Warm tones, single-hue gradients (light gray to slightly lighter gray), or radial ambient glows.
 
 **2. Excessive border-radius (everything is a pill)**
-AI loves `rounded-xl` and `rounded-full` on everything — cards, buttons, inputs, images.
+AI loves `rounded-xl` and `rounded-full` on everything. Cards, buttons, inputs, images.
 - FIX: Pick ONE border-radius and use it consistently. For professional tools: 0px on data containers, 4-6px on buttons. For consumer apps: 8px on cards, 6px on buttons. Never use `rounded-full` on cards.
 
-**3. Generic font stacks (Inter on everything)**
-Inter is the new Arial — it's everywhere because every AI suggests it. Same for Roboto, Poppins, and Space Grotesk.
-- FIX: For Level 1-2 (institutional): Inter is actually fine — the problem is using it without `tabular-nums` or proper weight hierarchy. For Level 3-5: pick a distinctive display font (Satoshi, Cabinet Grotesk, General Sans, Clash Display, Instrument Serif, Fraunces) and pair it with a clean body font. The key is PAIRING, not just picking one font for everything.
+**3. Generic font stacks (Inter, Roboto, Poppins on everything)**
+Inter is the new Arial. It is everywhere because every AI suggests it. Same for Roboto, Poppins, and Space Grotesk.
+- FIX: At Level 1-2 (institutional), Inter is acceptable as body text with `tabular-nums` and proper weight hierarchy (400 body, 500 labels, 600 headings). At Level 3+, Inter alone is a tell. Pick a distinctive display font (Satoshi, Cabinet Grotesk, General Sans, Clash Display, Instrument Serif, Fraunces) and pair it with a clean body font. The key is PAIRING, not picking one font for everything.
 
 **4. Symmetric card grids with identical padding**
 The classic "3 cards in a row with the same padding, same height, same border-radius" layout.
-- FIX: Vary card sizes. Use asymmetric grids. Make the hero card wider. Break the grid with a full-width element. If cards MUST be uniform (data tables), make them denser than the AI default — tighter padding, more data per card.
+- FIX: Vary card sizes. Use asymmetric grids. Make the hero card wider. Break the grid with a full-width element. If cards MUST be uniform (data tables), make them denser than the AI default. Tighter padding, more data per card.
 
 **5. Decorative color with no meaning**
-AI scatters colors randomly — a blue card here, a green badge there, purple accent on the sidebar. None of it means anything.
+AI scatters colors randomly. A blue card here, a green badge there, purple accent on the sidebar. None of it means anything.
 - FIX: Every color must have semantic meaning. Green = positive/success. Red = negative/danger. Blue = interactive/accent. Amber = warning. Gray = neutral. If you can't explain why something is colored, make it gray.
 
 **6. Stock hero sections with centered text**
 "Welcome to [Product Name]" + a one-line description + a big CTA button. This screams "landing page template."
-- FIX: If you need a hero, make it do something. Show real data. Show a live preview. Show an interactive element. Or remove it entirely — tools don't need heroes.
+- FIX: If you need a hero, make it do something. Show real data. Show a live preview. Show an interactive element. Or remove it entirely. Tools don't need heroes.
 
 **7. Default component library styling**
 Unmodified shadcn, Material UI, or Ant Design components are instantly recognizable.
-- FIX: Override at minimum: colors, border-radius, padding, font-size, and hover states. If using shadcn, override the CSS variables AND adjust component density. The defaults are designed to look "fine" — you need them to look "yours."
+- FIX: Override at minimum: colors, border-radius, padding, font-size, and hover states. If using shadcn, override the CSS variables AND adjust component density. The defaults are designed to look "fine". You need them to look "yours."
 
 **8. Animations that serve no purpose**
 Bounce effects, elastic springs, spinning loaders, parallax scroll, elements flying in from the sides.
@@ -148,8 +148,8 @@ Missing loading states is amateur. Using a spinner instead of a skeleton is lazy
 - FIX: Every data view needs a skeleton that matches the final layout shape. Synchronized shimmer animation via `background-attachment: fixed`. Never show a generic spinner.
 
 **11. Inconsistent spacing**
-This is the #1 subconscious trust-killer. Seniors can't articulate it, but they FEEL it — "something looks off about this."
-- FIX: Use a spacing scale and stick to it: 4px base (4, 8, 12, 16, 20, 24, 32, 48). Every margin, padding, and gap must be a multiple of 4. Audit spacing between sections — they should be consistent or intentionally varied, never accidental.
+This is the #1 subconscious trust-killer. Seniors can't articulate it, but they FEEL it. "something looks off about this."
+- FIX: Use a spacing scale and stick to it: 4px base (4, 8, 12, 16, 20, 24, 32, 48). Every margin, padding, and gap must be a multiple of 4. Audit spacing between sections. They should be consistent or intentionally varied, never accidental.
 
 **12. No data attribution or timestamps**
 For any app showing data, missing "Source: [X]" and "Updated: [date]" labels signal amateur hour.
@@ -175,7 +175,7 @@ AI designs for desktop-width text and never checks mobile. A 2-line hero becomes
 AI writes `<img src="/hero.jpg">` with no fallback, no loading state, and no check that the image exists. Site goes live with broken images.
 - FIX: Every image element needs: (1) the actual file committed to the repo or a verified URL, (2) a background-color fallback matching the design, (3) `loading="lazy"` on below-fold images, (4) correct `aspect-ratio` set in CSS so layout doesn't shift. NEVER deploy without visually confirming every image loads.
 
-**18. iOS Safari viewport hell**
+**18. IOS Safari viewport hell**
 `100vh` causes the address bar jiggle on iOS Safari. Content jumps when the browser chrome appears/disappears.
 - FIX: Use `100dvh` (dynamic viewport height) for full-screen layouts. Test on a REAL iPhone, not just Chrome DevTools responsive mode. The emulator lies about Safari behavior.
 
@@ -196,12 +196,12 @@ AI centers nav links within their flex container, but doesn't account for the lo
 - FIX: Use `position: absolute` + `left: 50%; transform: translateX(-50%)` on the nav links container so it's centered relative to the PAGE, not relative to the remaining flex space. Or use a 3-column grid: `grid-template-columns: 1fr auto 1fr` with logo left-aligned, nav centered, CTAs right-aligned.
 
 **23. Dead nav links that go nowhere**
-AI generates a full nav bar with "Product", "Customers", "Docs", "Changelog" links that point to `#` or `/product` pages that don't exist. User clicks, nothing happens. This feels broken and dishonest — worse than having no nav at all.
+AI generates a full nav bar with "Product", "Customers", "Docs", "Changelog" links that point to `#` or `/product` pages that don't exist. User clicks, nothing happens. This feels broken and dishonest. Worse than having no nav at all.
 - FIX: Every link in the nav MUST do one of three things: (1) link to a real page that exists, (2) scroll to a section on the current page using anchor links (`#pricing`, `#features`), or (3) not be there at all. If you're building a single page, remove nav items that would need separate pages. If the user wants multi-page, build the pages or ask first. NEVER ship a nav link that goes nowhere.
 
 **24. Abstract graphics that don't read as what they represent**
-AI loves generating "cool" abstract visuals (orbital rings, particle systems, mesh gradients) that are supposed to represent the product but don't. A speaker driver becomes a solar system. A data pipeline becomes a lava lamp. If a first-time viewer can't tell what the graphic represents within 2 seconds, it's failed.
-- FIX: Before building any abstract visual, state what it represents in one sentence. If you can't, use a simpler approach: a product photo, an icon, or a diagram with labels. If you DO build an abstract graphic, test it by asking: "Would someone who's never seen this product guess what this graphic is about?" If no, simplify or replace.
+AI loves generating "cool" abstract visuals (orbital rings, particle systems, mesh gradients) that are supposed to represent the product but do not. A speaker driver becomes a solar system. A data pipeline becomes a lava lamp.
+- FIX: Mechanical test: name the graphic with a concrete noun in one sentence ("this is a waveform of sound pressure over time", "this is a blueprint grid"). If the only nouns you can use are abstract (energy, flow, connection, synergy, journey), delete and try again. Concrete noun passes. Abstract noun fails. If you can't produce a concrete noun at all, use a product photo or labeled diagram instead.
 
 **25. Marquee/ticker banners as filler**
 The infinite scrolling text marquee ("Feature 1 • Feature 2 • Feature 3...") became a vibe-code cliché in 2024-2025. Every AI landing page has one. It's used because it's cheap visual polish that fills space between sections, not because it serves the content. Real premium sites that use marquees do it for client logos or press mentions, NOT for feature lists.
@@ -216,8 +216,8 @@ AI locks hero height to `100dvh`, headline size to `clamp(56px, 9.2vw, 152px)`, 
 - FIX: Use `rem` for type sizing, not `vw`. Let hero sections flow with content height instead of locking to `dvh`. Reserve viewport units for full-screen landing heroes only, and even then, set them as `min-height: 100dvh` not `height: 100dvh` so content can overflow if zoomed.
 
 **28. Theatrical cosplay elements masquerading as UI chrome**
-AI sees a themed concept (military, cyberpunk, retro, noir, defense) and tries to reinforce it by dressing the browser chrome in costume. A defense-themed site gets a "CLASSIFIED · TIER III ACCESS · AUTHORIZED PERSONNEL ONLY" strip above the nav. A cyberpunk site gets "SYSTEM.LOG // 2087.11.02 :: CONNECTION SECURE" in the footer. A retro site gets a fake CRT scanline overlay and a fake "CH 01" TV channel indicator. Real companies in those industries don't do any of this. Their marketing sites look like normal marketing sites. The theme belongs in the typography, palette, copy tone, photography, and product language. The browser chrome (nav, banners, headers, footers, cookie notices) stays realistic. **The principle: themed aesthetic is not the same as themed props. Typography and copy carry the theme. UI chrome stays realistic.**
-- FIX: Before shipping any themed UI element, ask: "Would this look at home on a movie set, or on an actual company's homepage?" If it belongs on a movie set, delete it. The hero headline, section copy, photography, color palette, and product names do the theming work. The nav bar, the footer links, the cookie notice, and the header should look like a real website built by a real company. The copy and photography create the feeling. The nav bar still looks like a normal website.
+AI sees a themed concept (military, cyberpunk, retro, noir, defense) and tries to reinforce it by dressing the browser chrome in costume. A defense-themed site gets a "CLASSIFIED · TIER III ACCESS · AUTHORIZED PERSONNEL ONLY" strip above the nav. A cyberpunk site gets "SYSTEM.LOG // 2087.11.02 :: CONNECTION SECURE" in the footer. A retro site gets a fake CRT scanline overlay and a fake "CH 01" TV channel indicator. Most real companies in those industries do not do this. The theme belongs in the typography, palette, copy tone, photography, and product language. The browser chrome (nav, banners, headers, footers, cookie notices) usually stays realistic.
+- FIX: Default: themed props OFF on UI chrome. Typography, copy tone, color palette, and photography carry the theme. If you want to add a themed UI element (scanline, fake classified strip, terminal log), first justify it in one sentence tied to the product: "This exists because the product IS a [genuine retro CRT emulator / actual classified ops tool]." Generic "it fits the vibe" is not a justification. A subtle scanline on a product that emulates a CRT is fine; a fake CLASSIFIED banner on a marketing site for a SaaS app is not.
 
 **29. Eccentric Unicode glyphs as section markers for fake institutional credibility**
 AI reaches for unusual Unicode characters (§, ¶, ※, ◆, ∞, ☰, ◎, ⟡, ❖) as section markers because they "feel" sophisticated or institutional. The most common offender is the section sign § in front of numbered sections: `§01 / DIVISIONS`, `§02 / CAPABILITIES`, `§03 / APPROACH`. To a typography nerd it reads as "legal document, government report, academic paper." To a normal visitor it looks weird and affected, like the site is cosplaying a textbook instead of communicating. Real companies use plain numbers (`01`, `02`) or plain words (`Section 1`, `Overview`, `Approach`).
@@ -236,8 +236,8 @@ AI loves to italicize or color one random letter in a text-only brand wordmark (
 - FIX: Text-only wordmarks should use uniform styling. Same weight, same style, same color for every letter. If the user wants a distinctive wordmark, vary the FONT or WEIGHT of the entire word, not individual letters. Only apply per-letter styling if the user explicitly requests it or provides a logo that uses it.
 
 **33. Filter-blur morphing blob backgrounds**
-The 2024-2025 AI signature move: `filter: blur(100px)` (or higher) applied to saturated radial gradients, combined with morphing `border-radius: 60% 40% 30% 70%` "blobs," often animated. Every prompt-engineered landing page has this. Changing the hue does not save you. Tell #1 is about the color; this is about the TECHNIQUE. Warm lighting blobs, aurora blobs, lavender blobs, amber blobs, teal blobs are all the same category of slop. If you reach for `filter: blur(100px)` on a gradient div, you are building a vibe-coded background.
-- FIX: Before typing `filter: blur`, ask: "Does this shape answer a question the product cares about?" Backgrounds must be argumentative, not atmospheric. Derive the background from the product's unique physical or functional trait (see the Conceptual Grounding Test above for examples). If the background cannot finish the sentence "this exists because [product reason]," delete it. Replace with a flat tinted dark, a noise texture (see PREMIUM.md Section E), or a composed inline SVG that means something to the product. For performance, SVG path updates in `requestAnimationFrame` are far cheaper on the GPU than `filter: blur()` and can be animated smoothly.
+The 2024-2025 AI signature move: `filter: blur(100px)` (or higher) applied to saturated radial gradients, combined with morphing `border-radius: 60% 40% 30% 70%` "blobs," often animated. Every prompt-engineered landing page has this. Tell #1 is about the color; this is about the TECHNIQUE. Aurora blobs, lavender blobs, amber blobs, teal blobs are the same category regardless of hue.
+- FIX: Default: blurred blobs OFF. Simple backgrounds (flat tinted dark, noise texture, single muted gradient) are the anti-slop choice. If you still want an ambient blurred gradient (some real sites do ship these well), it must pass both of: (a) the Conceptual Grounding Test (the shape/hue ties to a product trait, not decoration), AND (b) motion is subtle or absent (no morphing `border-radius` blob animations). Saturated hues + 100px+ blur + morphing animation is the combination that reads as slop. Miss any one of those ingredients and the technique can work.
 
 **34. Desktop-only design shipped without mobile adaptation**
 The site looks polished at 1440px but falls apart on a phone: horizontal overflow, unreadable text, untappable buttons, hero images that push the CTA below the fold, hover-dependent interactions that vanish on touch devices. AI builds for the preview window width (desktop) and never tests on a real phone. A site that 60%+ of visitors cannot use comfortably is not a finished site.
@@ -272,7 +272,7 @@ Based on the Impression Scale from Step 0, apply these specific rules:
 
 **Borders:** 1px `rgba(0,0,0,0.10)`. No border-radius on data containers. 4-6px on buttons.
 
-**Shadows:** Minimal — `0 1px 2px rgba(0,0,0,0.04)` for cards. No shadows on hover (use background color change instead).
+**Shadows:** Minimal. `0 1px 2px rgba(0,0,0,0.04)` for cards. No shadows on hover (use background color change instead).
 
 **Animations:** Hover states only (120ms). Optional: skeleton loading shimmer. No page transitions, no staggered rows unless the builder explicitly wants visual craft (bump to Level 3).
 
@@ -292,7 +292,7 @@ Start with Level 2 tokens, then add:
 
 **For Level 4-5 builds, load PREMIUM.md.** It contains the full offensive playbook: 10 curated font pairings with CDN links, OKLCH color palette generator, layered shadow system, spring easing presets, noise/grain textures, glassmorphism recipes, border glow system, micro-interaction patterns, hero moment recipes, SVG decorations, cursor enhancements, and scroll-triggered animations.
 
-Start with Level 3 tokens, then apply PREMIUM.md patterns on top. The anti-slop-ui rules from Steps 1-10 still apply at Level 4-5 — PREMIUM.md adds craft, it doesn't override safety.
+Start with Level 3 tokens, then apply PREMIUM.md patterns on top. The anti-slop-ui rules from Steps 1-10 still apply at Level 4-5. PREMIUM.md adds craft, it doesn't override safety.
 
 ---
 
@@ -364,46 +364,24 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 
 ### Universal Checks (all levels)
 
-- [ ] **No purple/blue gradient backgrounds anywhere?**
-- [ ] **No default component library styling visible?** (shadcn, MUI, Ant Design defaults must be overridden)
-- [ ] **Consistent spacing throughout?** (Pick a base unit — 4px or 8px — and verify every gap/margin/padding is a multiple)
-- [ ] **No decorative color?** (Every color has semantic meaning you can explain)
-- [ ] **Loading states use skeletons, not spinners?** (Skeletons match final layout shape)
-- [ ] **No stock hero section?** ("Welcome to X" with centered text + CTA = instant tell)
-- [ ] **Typography hierarchy is clear?** (Can you identify heading vs body vs label vs data at a glance?)
-- [ ] **`prefers-reduced-motion` respected?** (Wrap all animations in media query check)
-- [ ] **No hardcoded colors?** (All colors come from CSS variables / design tokens)
-- [ ] **Responsive?** (Tested at 360px, 768px, 1280px minimum)
-- [ ] **No empty states that show a blank screen?** (Every empty state has a message + action)
-- [ ] **No `console.log` in production code?**
-- [ ] **ZERO em dashes (—) in any client-facing copy?** (Search the entire output. Replace every single one.)
-- [ ] **Every image actually loads?** (Not a placeholder path — visually confirm in browser)
-- [ ] **Hero text tested on real mobile device?** (Not just responsive mode — real iPhone/Android)
-- [ ] **No orphan words?** (Single word on its own line at the end of a paragraph/heading)
-- [ ] **No unverified marketing claims?** ("Trusted by thousands" — can you prove it?)
-- [ ] **Every image is a REAL image, not a placeholder?** (No gray boxes, no "image here" text)
-- [ ] **No watermarked images?** (Verify the source is actually free — Unsplash/Pexels/Pixabay)
-- [ ] **All images have alt text?**
-- [ ] **Landmark comments at every major section?** (Hero, Nav, Content sections, Footer — all marked)
-- [ ] **Every image element has a description comment?** ("Image: barista pouring latte in white cup")
-- [ ] **Every component file has a purpose comment at the top?** (What it renders, where it's used, what data it needs)
-- [ ] **No noise comments?** (No "// this is a div", no commented-out old code, no "TODO maybe")
-- [ ] **No floating pill badges with dots?** ("● PRICING", "✨ FEATURES" — delete these entirely)
-- [ ] **No placeholder letter-in-a-box logos?** (Use text wordmark if no real logo exists)
-- [ ] **No pulsing/blinking dots next to text?** (Status indicators only where they mean something real)
-- [ ] **Toggles/tabs replay animations on content change?** (Price switch, filter change — visual cue that something happened)
-- [ ] **Header nav visually centered on the PAGE?** (Not just centered in remaining flex space — check with your eyes)
-- [ ] **Every nav link goes somewhere real?** (Click every single link — no `#` hrefs, no dead pages, no "coming soon")
-- [ ] **No theatrical cosplay in UI chrome?** (No fake CLASSIFIED banners, no fake terminal logs, no fake scanline overlays. Theme lives in typography and copy, not in nav bars or footers.)
-- [ ] **Section markers use plain numbers or words?** (`01`, `02`, `Section 1`. Never §, ¶, ※, or other eccentric Unicode glyphs.)
-- [ ] **No decorative dashes or lines before uppercase labels?** (Labels stand alone. Letter-spacing and case already signal "label".)
-- [ ] **Header is always visible with backdrop-filter blur?** (Not hiding/revealing on scroll. `position: fixed` + `backdrop-filter: blur(12px)` + semi-transparent bg.)
-- [ ] **Wordmark text has uniform letter styling?** (No random italic or colored single letters unless it's the actual brand logo.)
-- [ ] **Product images have clean backgrounds?** (Use rembg to remove backgrounds, or mix-blend-mode as CSS fallback.)
-- [ ] **No `filter: blur()` morphing blob backgrounds?** (No saturated gradients blurred to 100px+ with morphing border-radius. Changing the hue does not save you.)
-- [ ] **Every visual element passes the Conceptual Grounding Test?** (Can you finish "this exists because [product reason]" for every background, shape, animation, and decoration? If no, delete it.)
-- [ ] **`-webkit-font-smoothing: antialiased` set on html?** (One line, instant premium text rendering)
-- [ ] **Mobile adaptation pass complete?** (Read MOBILE.md. Test at 375px, 390px, 412px on a real phone. Tap every button. Scroll every section. If the mobile version feels like a shrunken desktop, it is not done.)
+The 34 Tells above ARE the checklist for slop. Do not re-run them here. These checks cover items NOT derivable from the Tells.
+
+- [ ] **Every visual element passes the Conceptual Grounding Test?** (For every background, shape, animation, and decoration: can you finish "this exists because [product reason]"? If no, delete.)
+- [ ] **Mechanical scans run on the output?** Grep the codebase for:
+   - `—` (em dash): zero in client-facing text
+   - `from-\w+-\d+ to-\w+-\d+` (Tailwind gradient): none purple/blue
+   - `rounded-full` on containers: zero
+   - `console.log`: zero in production
+   - `href="#"` or `href=""`: zero (dead nav links)
+   - `Welcome to` in hero copy: zero
+- [ ] **`prefers-reduced-motion` respected?** All animations wrapped in the media query.
+- [ ] **All colors from CSS variables / design tokens?** No hardcoded hex or rgb in components.
+- [ ] **All images have alt text AND a description comment upstairs?** ("Image: barista pouring latte in white cup" above the tag.)
+- [ ] **Every empty state has a message + action?** (No blank screens.)
+- [ ] **Landmark comments at every major section?** (Hero, Nav, Content, Footer marked for post-compaction navigation.)
+- [ ] **Component files have a purpose comment at top?** (What it renders, where used, data deps.)
+- [ ] **`-webkit-font-smoothing: antialiased` set on html?** One line, instant premium text rendering.
+- [ ] **Mobile adaptation pass complete?** (Read MOBILE.md. Test at 375px, 390px, 412px on a real phone. Tap every button. Scroll every section.)
 
 ### Level 1-2 Additional Checks
 
@@ -423,7 +401,7 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 - [ ] **OKLCH hue outside 200-280?** (Or blue paired with warm accent?)
 - [ ] **Shadows are layered (3+ layers)?** (Not single box-shadow)
 - [ ] **Spring easing curves used?** (Not browser default ease/ease-in-out)
-- [ ] **At least one "hero moment" exists?** (One memorable visual — not three)
+- [ ] **At least one "hero moment" exists?** (One memorable visual. Not three)
 - [ ] **Micro-interactions on buttons, inputs, cards?** (Press, focus glow, hover lift)
 - [ ] **Noise/grain texture on at least one background section?**
 - [ ] **Background is not a flat solid color?** (Gradient, texture, pattern, or layered depth)
@@ -467,13 +445,13 @@ Run this checklist before declaring any frontend work done. If ANY check fails, 
 ## STEP 6: FONTS THAT AREN'T VIBE CODE
 
 ### For Level 1-2 (Professional)
-- **Body:** Inter (yes, it's common, but at this level "invisible" is the goal)
+- **Body:** Inter (common, but at this level "invisible" is the goal). Use weights 400/500/600, `tabular-nums` on numbers, no decorative variants.
 - **Numbers/Data:** JetBrains Mono with `font-variant-numeric: tabular-nums lining-nums`
 - **Alternative body:** Geist (less common than Inter, same quality, self-host from the open-source repo)
 
 ### For Level 3 (Modern SaaS)
-- **Display:** Satoshi, General Sans, or Plus Jakarta Sans
-- **Body:** Inter or the same as display at lower weight
+- **Display:** Satoshi, General Sans, or Plus Jakarta Sans (Inter alone is a tell at this level)
+- **Body:** A lighter weight of the display font, or a paired clean sans
 - **Mono:** JetBrains Mono, Fira Code, or Berkeley Mono
 
 ### For Level 4-5 (Distinctive)
@@ -518,10 +496,10 @@ Study shipped products, not design showcases. Design galleries reward novelty. S
 ## COMMON PITFALLS AND SAVES
 
 ### "The client says it looks too plain"
-They mean it lacks visual hierarchy, not that it needs gradients. Fix: add ONE accent color more boldly, increase heading size contrast, add a subtle page entrance animation. Don't add decoration — add emphasis.
+They mean it lacks visual hierarchy, not that it needs gradients. Fix: add ONE accent color more boldly, increase heading size contrast, add a subtle page entrance animation. Don't add decoration. Add emphasis.
 
 ### "It looks like every other dashboard"
-Fix: Change ONE thing dramatically. A distinctive sidebar design. An unusual chart style. A custom loading animation. You don't need to change everything — one memorable element breaks the pattern.
+Fix: Change ONE thing dramatically. A distinctive sidebar design. An unusual chart style. A custom loading animation. You don't need to change everything. One memorable element breaks the pattern.
 
 ### "Dark mode looks hackerish"
 Fix: Warm up the dark palette. Use `#0A0A0F` (slight blue) not `#000000` (pure black). Use slightly warmer grays for text. Add very subtle warm-toned accent colors.
@@ -534,57 +512,22 @@ Fix: Test on a projector or external monitor. Light mode handles ambient light b
 
 ---
 
-## QUICK START TEMPLATES
+## PROMPT-TO-LEVEL INFERENCE
 
-### If the user just says "make me a dashboard" with no other context:
+When the user's prompt is vague, infer the Level from language cues without asking:
+- "enterprise / professional / institutional / serious" → Level 2
+- "dashboard / SaaS / internal tool / just make a [app]" → Level 3
+- "modern / polished / impressive / designed" → Level 4
+- "amazing / stunning / spectacular / product showcase / award-winning" → Level 5
+- "data terminal / trading / quant / information-dense" → Level 1
 
-1. Set Impression Scale to 3 (balanced default)
-2. Use light mode
-3. Font: Inter 14px base + JetBrains Mono for numbers
-4. Layout: sidebar (200px) + header (48px) + main content grid
-5. Colors: #F8F9FA background, #2D72D2 accent, semantic status colors
-6. Border-radius: 8px on cards, 6px on buttons
-7. Animations: page fade 200ms, hover 120ms, skeleton loading
-
-### If the user says "make it look enterprise / professional / institutional":
-
-1. Set Impression Scale to 2 (restrained)
-2. Light mode mandatory
-3. Font: Inter 14px + JetBrains Mono tabular-nums
-4. Layout: dense, minimal whitespace, data-first
-5. Colors: #F8F9FA background, #2D72D2 accent
-6. Border-radius: 0 on containers, 4px on buttons
-7. Animations: hover only (120ms), skeleton loading
-8. Add source attribution + timestamps on all data
-9. Right-align numbers, left-align text
-10. Test the "PowerPoint screenshot test"
-
-### If the user says "make it look amazing / impressive / modern":
-
-1. Set Impression Scale to 4 (expressive)
-2. Choose a distinctive font pairing
-3. Design ONE memorable interaction (a page load sequence, a unique hover effect, a creative chart)
-4. Use purposeful animation: staggered reveals (40-80ms per item), smooth transitions (200-300ms)
-5. Consider: subtle background texture, glass effects (if tasteful), custom shadows
-6. Still follow anti-slop rules: no purple gradients, meaningful colors, consistent spacing
+Once Level is set, STEP 2 and STEP 3 above are the source of truth for tokens and components. Do not re-derive them.
 
 ---
 
-## STEP 8: THE FINAL SCAN (MANDATORY — RUN AFTER EVERYTHING ELSE)
+## STEP 8: THE FINAL SCAN (MANDATORY, RUN AFTER EVERYTHING ELSE)
 
-### Self-Review Limit (DO NOT BURN TOKENS)
-
-**Do ONE sanity screenshot of the hero/above-fold area.** This catches: broken images, blank page, obvious layout collapse, missing fonts. If it looks intact, STOP and hand over to the user.
-
-Do NOT:
-- Take 5+ screenshots scrolling through the entire page
-- Measure pixel distances with JavaScript
-- Iterate on fixes without asking the user
-- Spend more than 60 seconds on self-review
-
-The right flow: build → one screenshot → "It's at [path]. Open it and tell me what needs fixing." The USER decides whether to review or hand it back. Your job is to not ship a blank page, not to art-direct yourself for 11 minutes.
-
-After the site is "done," run this automated scan before showing it to anyone. This catches the things that slip through design review because they're copy/content issues, not design issues.
+After the site is "done," run this scan before showing it to anyone. This catches the things that slip through design review because they're copy/content issues, not design issues. For verification depth (how many breakpoints to test, etc.), follow BRAIN.md.
 
 ### Em Dash Elimination Pass
 ```
@@ -601,9 +544,9 @@ error messages, placeholder text, meta descriptions, alt text.
 ```
 
 ### Copy Audit
-- Search for "the best", "the #1", "trusted by", "world-class", "cutting-edge", "revolutionary", "game-changing" — delete or replace with specifics
-- Search for exclamation marks — maximum 1 per page, and only if the context genuinely warrants excitement
-- Read every heading aloud — if it sounds like a LinkedIn post, rewrite it
+- Search for "the best", "the #1", "trusted by", "world-class", "cutting-edge", "revolutionary", "game-changing". Delete or replace with specifics
+- Search for exclamation marks. Maximum 1 per page, and only if the context genuinely warrants excitement
+- Read every heading aloud. If it sounds like a LinkedIn post, rewrite it
 - Check that no placeholder text remains ("Lorem ipsum", "Your tagline here", "Description goes here")
 
 ### Visual Audit (do this in the BROWSER, not in code)
@@ -614,55 +557,20 @@ error messages, placeholder text, meta descriptions, alt text.
 - Check: does the hero look the same on your screen as on a different device?
 
 ### The 3-Second Test
-Open the site fresh (clear cache, incognito). Look at it for exactly 3 seconds, then look away. Write down what you remember. If you remember "it was dark with blue accents" or "there were gradient cards" — it's vibe-coded. If you remember the CONTENT or the DATA — you've succeeded.
+Open the site fresh (clear cache, incognito). Look at it for exactly 3 seconds, then look away. Write down what you remember. If you remember "it was dark with blue accents" or "there were gradient cards". It's vibe-coded. If you remember the CONTENT or the DATA. You've succeeded.
 
 ---
 
-## BATTLE SCARS — Real Failures From Real Projects
+## BATTLE SCARS (why some rules look paranoid)
 
-Every rule in this skill exists because of a real mistake on a real project that was caught by a real person. These are not hypothetical — they happened and they cost time, credibility, or both.
+Four representative failures from real projects, each caught in a browser AFTER the code looked "done":
 
-### From a restaurant/cafe website build:
+1. **Emulator lied about mobile.** Hero text rendered as 2 lines in Chrome responsive mode, 3 lines on an actual iPhone 12. The descender on "y" was clipped by tight line-height. Rule created: test on a real device, set min line-height 1.2 on display text.
+2. **Hero deployed with broken images.** `<img src="/hero.jpg">` with no fallback, no loading state, no check the file existed. Rule created: Tell #17, verify every image loads in the browser before ship.
+3. **Third stat dropped to a new line at 768px.** Desktop and mobile both looked fine; tablet (iPad portrait) broke the row. Rule created: test at 768px specifically as a breakpoint, not just 360/1280.
+4. **Animation fired before background image loaded.** Text appeared over a blank page for 200ms. Rule created: sequence animations behind asset load, not wall-clock time.
 
-| # | What went wrong | The rule it created |
-|---|---|---|
-| 1 | "We sell out daily" — cocky unverified copy deployed to production | Tell #14: No unverified marketing claims |
-| 2 | Playfair Display used on h3, h4, h5, h6 — looked broken at small sizes | Tell #15: Display fonts on h1/h2 ONLY |
-| 3 | Em dashes in every paragraph of client copy | Tell #13: Zero em dashes, final scan mandatory |
-| 4 | "Plan Your Visit" text unreadable — white on light background | Checklist: contrast check on every text element |
-| 5 | Mobile carousel never tested, completely broken | Checklist: test on real devices |
-| 6 | Hero font so large it went from 2 lines to 4 lines on mobile | Tell #16: Hero text mobile testing |
-| 7 | Section headings too thin (weight 300) with wrong letter-spacing | Typography rule: minimum weight 400, audit spacing |
-| 8 | "Craving Something Fresh?" — generic AI copywriting voice | Tell #14: rewrite AI-sounding copy |
-
-### From a coffee shop website build:
-
-| # | What went wrong | The rule it created |
-|---|---|---|
-| 9 | Hero deployed with missing images, no fallback | Tell #17: verify every image loads |
-| 10 | Menu images had mismatched aspect ratios, parallax drifting | Aspect-ratio CSS rule, test scroll behavior |
-| 11 | Image scale changed between revisions without permission | Never modify user-provided assets without asking |
-| 12 | 3rd stat in a row dropped to its own centered line on tablet | Test at 768px specifically — tablet breakpoint kills layouts |
-| 13 | Orphan word "gone." sitting alone on a new line | Tell #16: `text-wrap: balance`, check for orphans |
-| 14 | Weak font weight on colored background section — unreadable | Minimum 500 weight on colored backgrounds |
-| 15 | Text animation fired before hero background image loaded | Sequence animations: image load → THEN text entrance |
-| 16 | Hero "y" descender clipped by line-height | Minimum line-height 1.2 on display text |
-| 17 | `100vh` causing iOS Safari address bar jiggle | Tell #18: use `100dvh` for viewport layouts |
-| 18 | Hero text 2 lines in emulator, 3 lines on real iPhone 12 | Emulators lie — test on REAL devices |
-| 19 | Mobile hamburger menu button had unwanted colored background | Audit every element's background on mobile specifically |
-| 20 | FAQ heading misaligned with content below it | Consistent left-alignment within sections |
-| 21 | Pattern background spacing/rotation inconsistent, looked random | If using decorative patterns, use CSS Grid not random positioning |
-| 22 | Food/product images not interactive (no hover affordance) | Every clickable image needs a hover state |
-| 23 | Carousel center alignment and indicator dots were wrong | Test carousel at every breakpoint, verify dot state matches slide |
-| 24 | CTA button bounced to external site, no graceful transition | External links: warn the user or open in new tab |
-| 25 | Menu not discoverable — buried below the fold on mobile | For food/restaurant: MENU must be above fold or in sticky nav |
-| 26 | No "Menu Page" pattern at all — food business had no food display | **For food businesses: a Menu page is MANDATORY. Not optional.** |
-
-### The Meta-Lesson
-
-Every one of these was caught AFTER the developer thought the site was done. The developer looked at the code and said "looks good." The REAL person looked at the BROWSER and said "this is broken."
-
-**Code review is not visual review.** The final audit must happen in a browser, on real devices, with fresh eyes. If you built it, you can't see its flaws — have someone else look at it for 3 seconds and tell you what's wrong.
+**The meta-lesson:** code review is not visual review. If you built it, you cannot see its flaws. Open the browser, on real devices, with fresh eyes. 3-second first impression is the test that matters.
 
 ---
 
@@ -673,19 +581,19 @@ A site with gray placeholder boxes or watermarked stock photos is INSTANTLY iden
 ### Free, No-Watermark Image Sources
 
 **For backgrounds, heroes, and atmospheric shots:**
-- **Unsplash** (unsplash.com) — high quality, free, no attribution required. Use the API or direct URLs: `https://images.unsplash.com/photo-[ID]?w=1200&q=80`
-- **Pexels** (pexels.com) — similar quality, free, no attribution required
-- **Pixabay** (pixabay.com) — free, no attribution, wider variety including illustrations
+- **Unsplash** (unsplash.com). High quality, free, no attribution required. Use the API or direct URLs: `https://images.unsplash.com/photo-[ID]?w=1200&q=80`
+- **Pexels** (pexels.com). Similar quality, free, no attribution required
+- **Pixabay** (pixabay.com). Free, no attribution, wider variety including illustrations
 
 **For UI icons:**
-- **Lucide** (lucide.dev) — clean, consistent SVG icons. `npm install lucide-react`
-- **Heroicons** (heroicons.com) — Tailwind's official icon set
-- **Phosphor** (phosphoricons.com) — flexible weight system
+- **Lucide** (lucide.dev). Clean, consistent SVG icons. `npm install lucide-react`
+- **Heroicons** (heroicons.com). Tailwind's official icon set
+- **Phosphor** (phosphoricons.com). Flexible weight system
 - NEVER use emoji as icons in professional interfaces
 
 **For product/business photos:**
 - ALWAYS use the client's REAL photos if available
-- If no real photos: use Unsplash/Pexels with SPECIFIC search terms (not "business meeting" — search "coffee shop interior kuala lumpur" or "office building malaysia")
+- If no real photos: use Unsplash/Pexels with SPECIFIC search terms (not "business meeting". Search "coffee shop interior kuala lumpur" or "office building malaysia")
 - NEVER use obviously American stock photos for non-US businesses
 - **For product hero shots (Level 4-5):** search for "product name cutout", "product name PNG isolated", or "product name product shot on black/white". Product images floating on the page without a visible background look 10x more premium.
 
@@ -728,17 +636,17 @@ Note: mix-blend-mode is imperfect. It affects the entire image, not just the bac
 When building a site, Claude should:
 1. **Identify every place an image is needed** (hero, about section, team, products, backgrounds)
 2. **Search for real images** using Unsplash/Pexels URLs with descriptive queries matching the actual business
-3. **Use direct URLs with size parameters** — `?w=800&q=80` for content images, `?w=1920&q=80` for heroes
-4. **Set proper CSS** — `object-fit: cover`, explicit `aspect-ratio`, `loading="lazy"` on below-fold images
+3. **Use direct URLs with size parameters**. `?w=800&q=80` for content images, `?w=1920&q=80` for heroes
+4. **Set proper CSS**. `object-fit: cover`, explicit `aspect-ratio`, `loading="lazy"` on below-fold images
 5. **Add a background-color fallback** that matches the image's dominant tone (so layout doesn't flash white while loading)
 6. **VERIFY every image URL loads** before declaring the page done
 
 ### Image Anti-Patterns
-- Gray boxes with "Image placeholder" text — NEVER ship this
-- Watermarked stock photos — check that the source is actually free
+- Gray boxes with "Image placeholder" text. NEVER ship this
+- Watermarked stock photos. Check that the source is actually free
 - Images that don't match the business (American office for a Malaysian company)
 - All images the same aspect ratio when they shouldn't be (hero should be wide, team photos should be square)
-- No `alt` text on images — accessibility and SEO failure
+- No `alt` text on images. Accessibility and SEO failure
 - Images not optimized (serving a 4000px image in a 400px container)
 - Colored ambient glow or radial gradient behind product images. The product should sit directly on the page background with no artificial lighting effects. Glow behind a product looks like a gaming peripheral ad, not a premium brand. If the product needs to "pop," use contrast with the page background color, not a colored shadow.
 
@@ -746,7 +654,7 @@ When building a site, Claude should:
 
 ## STEP 10: CODE COMMENTS AND NAMING (COMPACT SURVIVAL)
 
-Claude Code sessions get compacted — the AI loses context and has to re-read code to understand what it built earlier. Without comments, it's blind. Without descriptive names, a user saying "change the chair image" becomes an impossible scavenger hunt through `img-x8fj2k.png`.
+Claude Code sessions get compacted. The AI loses context and has to re-read code to understand what it built earlier. Without comments, it's blind. Without descriptive names, a user saying "change the chair image" becomes an impossible scavenger hunt through `img-x8fj2k.png`.
 
 This section ensures code survives compaction AND stays navigable for humans.
 
@@ -764,7 +672,7 @@ BAD:  homepage-section-2.jpg (meaningless if layout changes)
 GOOD: barista-pouring-latte.jpg (always findable by description)
 ```
 
-**CSS/component files — name by function:**
+**CSS/component files. Name by function:**
 ```
 BAD:  styles2.css, Component1.tsx, utils.ts
 GOOD: hero-section.css, pricing-table.tsx, format-currency.ts
@@ -888,30 +796,10 @@ If ANY answer is no, add the missing comment. 30 seconds of commenting now saves
 
 ---
 
-## INDUSTRY-SPECIFIC RULES
+## FILE PRECEDENCE
 
-### Food / Restaurant / Cafe Businesses
-- Menu page is MANDATORY — list every item with price, description, and dietary tags
-- Food photography must be high quality or don't show it at all (no stock photos of food)
-- Hours and location must be above the fold on mobile
-- "Order Now" CTA must link somewhere real — if no online ordering, say "Call to Order" with phone number
-- Never use AI-generated food descriptions — they all sound the same ("a delightful medley of...")
-
-### SaaS / Dashboard Applications
-- Loading states on every data view (skeleton, not spinner)
-- Source attribution on all data
-- Export functionality (even if just "Copy to clipboard")
-- Consistent number formatting across the entire app
-- Empty states with clear next-action CTA
-
-### Portfolio / Personal Sites
-- Real project screenshots, not mockups
-- Working links to live projects (test them before deploying)
-- No "About Me" section that starts with "I'm a passionate developer..."
-- Contact method must actually work (test the form, verify the email)
-
-### E-commerce
-- Product images must have consistent aspect ratios
-- Price must be visible without clicking into the product
-- Cart must be accessible from every page
-- Mobile checkout flow must be tested end-to-end on a real phone
+If guidance conflicts across files:
+- **SKILL.md wins** for visual decisions (tokens, Tells, components, copy rules).
+- **BRAIN.md wins** for process decisions (how to decompose, verify, handle rejection).
+- **PREMIUM.md** extends SKILL.md for Level 4-5; never contradicts it.
+- **MOBILE.md** runs AFTER desktop is complete; never overrides desktop tokens, only adapts them.

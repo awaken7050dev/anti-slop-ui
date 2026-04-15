@@ -43,16 +43,16 @@ For frontend specifically:
 - Test with empty data (what happens when the API returns nothing?)
 - Test with broken data (what happens when an image URL 404s?)
 
-### 5. Self-Critique With Three Personas
-After building, review through three hostile lenses:
+### 5. Mechanical Self-Check (NOT taste-based introspection)
+After building, run grep-able checks on your own output. Do not ask yourself "does this look good" (you cannot answer that from inside the loop). Ask:
+- Is every color in the output either a token reference or from the Level palette? (grep for hex/rgb literals)
+- Does every animation have a `prefers-reduced-motion` guard?
+- Does every image have alt text and a description comment?
+- Is spacing a multiple of the base unit (4px or 8px)? (scan for odd pixel values)
+- Is every nav `href` either a real path, an anchor, or removed? (grep for `href="#"` and `href=""`)
+- Has the em dash scan been run? (grep for `—`)
 
-**The Designer:** "Is the spacing consistent? Is the typography hierarchy clear? Does every color have meaning? Would I be embarrassed showing this to a design-minded person?"
-
-**The Mobile User:** "Can I reach the CTA with my thumb? Does the text overflow on a small screen? Is the touch target at least 44px? Does the page feel fast on a phone?"
-
-**The Skeptic:** "Does this look AI-generated? What's the first thing someone would criticize? If I showed this on Reddit, would people roast it?"
-
-Fix anything any of them would flag.
+Mechanical tests pass or fail. Taste tests always "pass" because the builder cannot see their own output clearly.
 
 ### 6. Backward Verify Against the Request
 After completing a feature, pretend you never saw the original request. Look at what you built and describe what it does. Then compare against what was actually asked for.
@@ -136,11 +136,12 @@ These are the specific ways AI-driven frontend work goes wrong. Check for them d
 
 ---
 
-## Periodic Reflection (Every 3 Completed Pages/Components)
+## Drift Check (Every 3 Completed Pages)
 
-Stop and ask:
-1. Am I still following the Impression Scale level we set at the start? Or have I drifted?
-2. Is the spacing consistent across everything I've built so far? (Open pages side by side)
-3. Am I using the same component patterns everywhere, or has my approach drifted?
-4. What's the riskiest remaining work? (Do that next, while you have context)
-5. If I showed everything built so far to the target audience, would they see a cohesive product or a patchwork?
+For multi-page builds, the biggest risk is tokens drifting between pages. Do not check "does it feel cohesive" (taste); check mechanically:
+1. Open the first page and latest page side by side. Is the header the same height? Same background? Same nav styling?
+2. Is the body font size identical across both? (Inspect element, not eyeball.)
+3. Is the spacing scale the same? (Do both pages use 8px increments, or did one drift to 10/12/14?)
+4. Are the button styles identical? (Same height, padding, radius, color.)
+
+If any of these diverge, pick one source of truth (usually the first page) and fix the later ones. Do NOT try to remember "what Level were we at" halfway through; read STEP 2 of SKILL.md again to verify.
